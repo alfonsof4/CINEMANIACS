@@ -29,7 +29,7 @@ This is the first group project assignment and will meet the acceptance criteria
 
 
 ## Demo Gif
-<iframe src="https://giphy.com/embed/YRdBZ4CDweTozHWxh0" width="480" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/theoffice-YRdBZ4CDweTozHWxh0">via GIPHY</a></p>
+
 
 ## Deployed link
 - 
