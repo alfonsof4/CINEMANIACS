@@ -1,4 +1,4 @@
-<h1 align="center">Group-Coding-Project</h1>
+<h1 align="center">CINEMANIACS</h1>
 
 <h2 align="center">Project Description</h2>
 This application will allow a user to search for a specific movie then be
