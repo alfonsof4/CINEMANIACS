@@ -1,3 +1,37 @@
 * {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+/* none of theses styles are set in stone it was just a base for me to start*/
+/* this root will give it some space between the search field and the search button*/
+.form-group {
+  margin-bottom: 16px;
+}
+
+/*style for the search button*/
+#search {
+  color: #fff;
+  background-color: #007bff;
+  font-size: 16px;
+  outline: none;
+  min-height: 38px;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  padding: 5.92px 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 4px;
+}
+/* stye for the search input*/
+#input value {
+  width: 760px;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  outline: none;
+  color: #495057;
+  background-color: #fff;
+  border-color: 1px solid #ced4da;
+  border-radius: 4px;
 }
