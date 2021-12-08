@@ -1,7 +1,8 @@
-<h1 align="center">Group-Coding-Project</h1>
+<h1 align="center">CINEMANIACS</h1>
 
 <h2 align="center">Project Description</h2>
-This description will be updated as we finalize the project
+This application will allow a user to search for a specific movie then be
+given a list of movie showtimes for that movie based off their zip code.
 
 This is the first group project assignment and will meet the acceptance criteria listed below:
 
