@@ -5,34 +5,143 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" <link rel="stylesheet"
-        href="assets\css\style.css" />
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="assets\css\style.css">
 
-    <title>Project 1</title>
-
+    <title>CINEMANIACS Movie Showtimes</title>
 </head>
 
+<!-- page body start  -->
+
 <body style="background-color: darkgray; text-align: center;">
+
+    <!-- header start -->
     <header>
-        <h1>Starting page</h1>
-        <h2 id="date"></h2>
-        
+        <div class="row small-up-2 medium-up-3 large-up-6">
+            <div class="column">
+                <img class="thumbnail" src="assets\images\charles-deluvio-lJJlaUWYrPE-unsplash.jpg">
+                our logo here
+            </div>
+            <h1>CINEMANIACS</h1>
+            <h2 id="date"></h2>
     </header>
+    <!-- header end  -->
 
+
+    <!-- navigation search and favorites start  -->
     <nav>
-        Searchbox code here
+        <!-- Favorites Navigation -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <ul class="small-block-grid-3">
+                    <!-- need to format to display sidexside -->
+                    <!-- this list will pull fro the local storage -->
+                    
+                    <li>your favorited movie thumbnail</li>
+                    <li>your favorited movie thumbnail</li>
+                    <li>your favorited movie thumbnail</li>
+                </ul>
+            </div>
 
+            <!-- searchbar -->
+            <!-- link functionality to this framework -->
+            <div class="top-bar">
+                <div class="medium-5 large-3 columns">
+                    <div class="callout secondary">
+                        <form>
+                            <div class="row">
+                                <div class="small-12 columns">
+                                    <label>Search For A Movie In Your Area
+                                        <input type="text" placeholder="Enter Movie Title...">
+                                    </label>
+                                </div>
+                                <div class="small-12 columns">
+                                    <input type="number" placeholder="Enter Zip Code...">
+                                    </label>
+                                    <button type="submit" class="button">Search Now!</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
     </nav>
+    <!-- navigation search and favorites end  -->
+
+    <!-- main content start -->
+    <main>
+        search results DYNAMICALLY populate here tiled
+        <!-- these are placeholders -->
+        <div class="row small-up-2 medium-up-3 large-up-4">
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <!-- placeholders end  -->
+    </main>
+    <!-- main content end  -->
+
+
+    <footer>
+        <div class="row expanded">
+
+            <div class="medium-6 columns">
+                <ul class="menu">
+                    <li><a href="#">Legal</a></li>
+                    <li><a href="#">Partner</a></li>
+                    <li><a href="#">Explore</a></li>
+                </ul>
+            </div>
+
+            <div class="medium-6 columns">
+                <ul class="menu align-right">
+                    <li class="menu-text">Copyright © 2021 CINEMANIACS</li>
+                </ul>
+            </div>
+        </div>
+
+    </footer>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script src="assets\js\script.js"></script>
 </body>
 
