@@ -7,38 +7,56 @@ but since its free still have to add the logo or whatever somewhere to pay credi
 
 //Defining the intial value
 const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
-const newUrl =
+const IMG_URL = "https://image.tmdb.org/t/p/w500";
+const url =
   "https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
-
 //Selecting Elements for the DOM
 
 const buttonElement = document.querySelector("#search");
-const InputElemenet = document.querySelector("#inputvalue");
+const inputElement = document.querySelector("#inputValue");
+const movieSearchable = document.querySelector("#movies-searchable");
 
-//creating of the button elemet it will fire once selected
+function movieSection(movies) {
+  return movies.map((movie) => {
+    return `
+           <img src=${IMAGE_URL + movie.poster_path} data-movie-id=${movie.id}/>
+        `;
+  });
+}
+
+function createMovieContainer(movies) {
+  const movieElement = document.createElement("div");
+  movieElement.setAttribute("class", "movie");
+
+  const movieTemplate = `
+    <section class="section">
+        ${movieSelection(movies)}
+       </section>
+        <div class="content">
+        <p id="content-close">X</p>
+        </div>
+        `;
+
+  movieElement.innerHTML = movieTemplate;
+  return movieElement;
+}
 
 buttonElement.onclick = function (event) {
-  /*this is the example in colsole log to show yall button works
-   console.log('hello button click');*/
-
   event.preventDefault();
-  //prevent the default behavior of the submission button
+  const value = inputElement.value;
 
-  const value = "inputElement.value";
-  /*again just to show yall what would be logged when ran and that it worked
-   console.log('Value : ', value);*/
-  const newUrl = url + "&query=" + value;
-
-  /*this is a bulit in javascript function i spent forever trying to convert the data from
-    the moviedb that they key would return and I was stuck then I found this it 
-    basically converts the raw data i was getting from the api into json and fits it into code*/
-  fetch(newUrl)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("Data: ", data);
-    })
-    .catch((error) => {
-      console.log("Error: ", error);
-    });
-  console.log("Value ", value);
+  const url = newUrl + "&query=" + value;
 };
+
+fetch(newUrl)
+  .then((res) => res.json())
+  .then((data) => {
+    const movies = data.results;
+    const movieBlock = createMovieContainer(movies);
+    movieSearchable.appendChild(movieBlock);
+    console.log("Data: ", data);
+  })
+  .catch((error) => {
+    console.log("Error: ", error);
+  });
+console.log("Value ", value);
