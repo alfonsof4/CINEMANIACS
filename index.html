@@ -53,13 +53,13 @@
                             <div class="row">
                                 <div class="small-12 columns">
                                     <label>Search For A Movie In Your Area
-                                        <input type="text" placeholder="Enter Movie Title...">
+                                        <input type="text" id="inputValue" placeholder="Enter Movie Title...">
                                     </label>
                                 </div>
                                 <div class="small-12 columns">
                                     <input type="number" placeholder="Enter Zip Code...">
                                     </label>
-                                    <button type="submit" class="button">Search Now!</button>
+                                    <button type="submit" id="search" class="button">Search Now!</button>
                                 </div>
                             </div>
                         </form>
@@ -73,7 +73,7 @@
     <main>
         search results DYNAMICALLY populate here tiled
         <!-- these are placeholders -->
-        <div class="row small-up-2 medium-up-3 large-up-4">
+        <div id="movies-searchable" class="row small-up-2 medium-up-3 large-up-4">
             <div class="column">
                 <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
                 <h5>Showtimes</h5>
