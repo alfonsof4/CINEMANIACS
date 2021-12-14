@@ -4,6 +4,12 @@ date.textContent = moment().format('dddd Do MMMM, YYYY');
 
 //setting a var to display movie results later
 var movieTitleDisplay = document.querySelector('.movie-title-display')
+//setting var for the movie details after a title is clicked
+var detailsPopulate = document.querySelector('.details-populate')
+
+//hides the results grid div on load
+$('.movie-title-display').hide();
+$('#zipBtn').hide();
 
 //Defining the intial value
 const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
@@ -15,6 +21,7 @@ const searchBtn = document.querySelector("#search");
 const clearBtn = document.querySelector("#clear");
 const inputElement = document.querySelector("#inputValue");
 
+
 //movie poster to populate
 function movieSection(movies) {
     return movies.map((movie) => {
@@ -22,23 +29,23 @@ function movieSection(movies) {
     });
 }
 
-//
-function createMovieContainer(movies) {
-    const movieElement = document.createElement("div");
-    movieElement.setAttribute("class", "movie");
+// //
+// function createMovieContainer(movies) {
+//     const movieElement = document.createElement("div");
+//     movieElement.setAttribute("class", "movie");
 
-    const movieTemplate = `
-    <section class="section">
-    ${movieSection(movies)}
-</section>
-<div class="content">
-    <p id="content-close">X</p>
-</div>
-`;
+//     const movieTemplate = `
+//     <section class="section">
+//     ${movieSection(movies)}
+// </section>
+// <div class="content">
+//     <p id="content-close">X</p>
+// </div>
+// `;
 
-    movieElement.innerHTML = movieTemplate;
-    return movieElement;
-}
+//     movieElement.innerHTML = movieTemplate;
+//     return movieElement;
+// }
 
 //executes search, clears input value
 searchBtn.onclick = function (event) {
@@ -51,6 +58,9 @@ searchBtn.onclick = function (event) {
     //hides the populate-here placeholders on click. need to change it to only hide on successful search execution not on empty clicks or no returns
     $('#populate-here').hide();
     $('.placeholder').hide();
+
+    //shows the results div
+    $('.movie-title-display').show();
 
     //search for movie entered into search and return the data
     fetch(newUrl).then(function (res) {
@@ -76,25 +86,40 @@ searchBtn.onclick = function (event) {
 
                     //on target click clear the results and display info on the movie selected, showing the tile as h1 and info as p
                     movieTitle.addEventListener('click', function (e) {
+
+                        //hides the populate-here placeholders again to display the clicked detail and this time the movie-title-display grid
+                        $('#populate-here').hide();
+                        $('.placeholder').hide();
+                        $('.movie-title-display').hide();
+
+                        //clears the previous titles
                         movieTitleDisplay.textContent = ''
                         console.log(data.results);
+                        //pulls the detailed data from the clicked title
                         var filtered = data.results.filter(item => item.id == e.target.id)
-                        console.log(filtered);
+                        // console.log(filtered);
+
+                        //creates the elements and displays the detailed information
                         var title = document.createElement('h1')
+                        title.setAttribute('class', 'detail')
                         title.textContent = filtered[0].title
                         var info = document.createElement('p')
                         info.textContent = filtered[0].overview
 
+                        $('#zipBtn').show();
+
+                        detailsPopulate.prepend(title, info)
+
                         // create btn for showtime search and append to mtd 
-                        movieTitleDisplay.append(title, info)
-
-
+                        // movieTitleDisplay.append(title, info)
                     })
                 }
             });
         } else {
             //change to modal
             alert("error:" + res.statusText);
+            // reset the page to default after error
+            location.reload();
         }
     });
 };

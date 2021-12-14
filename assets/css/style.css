@@ -30,3 +30,7 @@
 
 /* results from movie search end  */
 
+.detail {
+    text-align: center;
+    display: inline;    
+}
