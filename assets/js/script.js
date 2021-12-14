@@ -1,7 +1,9 @@
+//using moment to display the current date
 var date = document.querySelector('#date');
-var movieTitleDisplay = document.querySelector('.movie-title-display')
 date.textContent = moment().format('dddd Do MMMM, YYYY');
 
+//setting a var to display movie results later
+var movieTitleDisplay = document.querySelector('.movie-title-display')
 
 //Defining the intial value
 const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
@@ -60,6 +62,8 @@ searchBtn.onclick = function (event) {
                     var movieDiv = document.createElement('div')
                     movieTitleDisplay.append(movieDiv)
                     var movieTitle = document.createElement('p');
+                    movieTitle.setAttribute('class', 'box')
+
                     movieTitle.setAttribute('id', data.results[i].id)
                     movieTitle.textContent = data.results[i].title;
                     movieDiv.append(movieTitle)
@@ -73,9 +77,11 @@ searchBtn.onclick = function (event) {
                         title.textContent = filtered[0].title
                         var info = document.createElement('p')
                         info.textContent = filtered[0].overview
-                        
+
                         // create btn for showtime search and append to mtd 
                         movieTitleDisplay.append(title, info)
+
+
                     })
                 }
             });
@@ -86,6 +92,11 @@ searchBtn.onclick = function (event) {
     });
     console.log("Value ", value);
 };
+
+//this links the second html created for the local showtimes page
+function toLocalSearchPage() {
+    location.href = "local-search.html";
+}
 
 function getZip(movieTitle) {
     console.log(movieTitle);
