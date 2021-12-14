@@ -9,6 +9,9 @@ const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
 //https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7&query=furious
 //const movie_endpoint = "http://api.themoviedb.org";
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
+const nowPlayingUrl =
+  "https://api.themoviedb.org/3/movie/now_playing?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
+
 const url =
   "https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
 //const newUrl =
@@ -20,6 +23,21 @@ const buttonElement = document.querySelector("#search");
 const inputElement = document.querySelector("#inputValue");
 const movieSearchable = document.querySelector("#movies-searchable");
 
+function getNowPlaying() {
+  fetch(nowPlayingUrl).then(function (res) {
+    if (res.ok) {
+      res.json().then(function (data) {
+        console.log("test", data);
+        const movies = data.results;
+        const movieBlock = createMovieContainer(movies);
+        movieSearchable.innerHTML = movieBlock;
+      });
+    } else {
+      alert("error:" + res.statusText);
+    }
+  });
+}
+getNowPlaying();
 /*function requestMovie(uri, onComplete, onError) {
   fetch(url)
     .then((res) => res.json())
