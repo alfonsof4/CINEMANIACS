@@ -153,4 +153,5 @@ clearHistory.addEventListener('click', function() {
     $(".movieBox").remove();
     // window.location.reload(true);
     window.localStorage.clear();
+    location.reload();
 }, false);
