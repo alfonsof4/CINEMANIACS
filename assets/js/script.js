@@ -1,3 +1,4 @@
+
 // foundation plugin for modal to run
 $(document).foundation();
 
