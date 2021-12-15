@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 42d4bb068e8e4d889e3e455c4f2d6e08721d8da6
 // foundation plugin for modal to run
 $(document).foundation();
 
@@ -12,43 +16,22 @@ var detailsPopulate = document.querySelector('.details-populate')
 
 //hides the results grid div on load
 $('.movie-title-display').hide();
+//hides the zip search button on load
 $('#zipBtn').hide();
 
 //Defining the intial value
 const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
-// const API_KEY_OMBD = '6ece1090'
 const url = "https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
 
-//Selecting Elements for the
+//Selecting Elements
 const searchBtn = document.querySelector("#search");
+<<<<<<< HEAD
 // const clearBtn = document.querySelector("#clear");
+=======
+>>>>>>> 42d4bb068e8e4d889e3e455c4f2d6e08721d8da6
 const inputElement = document.querySelector("#inputValue");
 
-
-//movie poster to populate
-function movieSection(movies) {
-    return movies.map((movie) => {
-        return `<img src=${IMAGE_URL + movie.poster_path} data-movie-id=${movie.id}/>`;
-    });
-}
-
-// //
-// function createMovieContainer(movies) {
-//     const movieElement = document.createElement("div");
-//     movieElement.setAttribute("class", "movie");
-
-//     const movieTemplate = `
-//     <section class="section">
-//     ${movieSection(movies)}
-// </section>
-// <div class="content">
-//     <p id="content-close">X</p>
-// </div>
-// `;
-
-//     movieElement.innerHTML = movieTemplate;
-//     return movieElement;
-// }
+var movie = document.querySelector('#movie')
 
 //executes search, clears input value
 searchBtn.onclick = function (event) {
@@ -56,6 +39,10 @@ searchBtn.onclick = function (event) {
     //takes the input from the searchbar and applies it to the api url
     const value = inputElement.value;
     const newUrl = url + "&query=" + value;
+
+    // save to local storage call here?
+
+    //clear the input value box
     inputElement.value = '';
 
     //hides the populate-here placeholders on click. need to change it to only hide on successful search execution not on empty clicks or no returns
@@ -65,6 +52,7 @@ searchBtn.onclick = function (event) {
     //shows the results div
     $('.movie-title-display').show();
 
+//getResults
     //search for movie entered into search and return the data
     fetch(newUrl).then(function (res) {
         if (res.ok) {
@@ -77,9 +65,17 @@ searchBtn.onclick = function (event) {
 
                 //loop through the data results and create each title as a p
                 for (var i = 0; i < data.results.length; i++) {
+
                     var movieDiv = document.createElement('div')
+<<<<<<< HEAD
                     // paulg: class attribute added to div for modal removal later
                     movieDiv.setAttribute("class", "movieBox");
+=======
+
+                // paulg: class attribute added to div for modal removal later
+                    movieDiv.setAttribute("class", "movieBox");
+
+>>>>>>> 42d4bb068e8e4d889e3e455c4f2d6e08721d8da6
                     movieTitleDisplay.append(movieDiv)
                     var movieTitle = document.createElement('p');
                     //set class, id of each p
@@ -110,18 +106,17 @@ searchBtn.onclick = function (event) {
                         title.textContent = filtered[0].title
                         var info = document.createElement('p')
                         info.textContent = filtered[0].overview
-
+                        //reveals the zipBtn that will redirect to the local search page
                         $('#zipBtn').show();
 
                         detailsPopulate.prepend(title, info)
 
                         // create btn for showtime search and append to mtd 
-                        // movieTitleDisplay.append(title, info)
                     })
                 }
             });
         } else {
-            //change to modal
+        //change to modal
             alert("error:" + res.statusText);
             // reset the page to default after error
             location.reload();
@@ -129,11 +124,13 @@ searchBtn.onclick = function (event) {
     });
 };
 
+
 //this links the second html created for the local showtimes page
 function toLocalSearchPage() {
     location.href = "local-search.html";
 }
 
+<<<<<<< HEAD
 function getZip(movieTitle) {
     console.log(movieTitle);
 }
@@ -147,6 +144,15 @@ openModal.addEventListener("click", function() {
   localStorage.setItem("movie2", "movieTitle");
 }, false);
 
+=======
+// paulg: modal created to make sure user would like to clear their search history
+var openModal = document.getElementById("openModal");
+openModal.addEventListener("click", function () {
+    localStorage.setItem("movies", "movieTitle");
+}, false);
+
+
+>>>>>>> 42d4bb068e8e4d889e3e455c4f2d6e08721d8da6
 var clearHistory = document.getElementById("clearSearches");
 clearHistory.addEventListener('click', function() {
     console.log('Hello world');
