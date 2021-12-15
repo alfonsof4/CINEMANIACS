@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +11,6 @@
 
     <link rel="stylesheet" href="assets\css\style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
 
     <title>CINEMANIACS Movie Showtimes</title>
 </head>
@@ -37,23 +36,21 @@
         <!-- Favorites Navigation -->
         <div class="top-bar">
             <div class="top-bar-left">
-                <div class="small-block-grid-3">
+                <div class="small-block-grid-3 movie-title-display">
                     <!-- need to format to display sidexside -->
-
                     </div>
             </div>
 
             <!-- searchbar -->
             <!-- link functionality to this framework -->
             <div class="top-bar">
-                recent searches populate here?
                 <div class="medium-5 large-3 columns">
                     <div class="callout secondary">
                         <form>
                             <div class="row">
                                 <div class="small-12 columns">
                                     <label>Search For A Movie In Your Area
-                                        <input id = "inputValue" type="text" placeholder="Enter Movie Title...">
+                                        <input id = "inputValue" type="text" placeholder="Enter Zip Code...">
                                     </label>
                                 </div>
                                 <div class="small-12 columns">
@@ -68,18 +65,24 @@
                 </div>
             </div>
     </nav>
-    <!-- navigation search and favorites end  -->
+    <!-- navigation search and recents end  -->
 
     <!-- main content start -->
-    <main class="details-populate">
-        <h3 id ="populate-here">search results DYNAMICALLY populate here tiled</h3>
-        <div id="populate-here">
-                <img id="populate-here" class="thumbnail placeholder"  src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg" alt="Placeholder image of pug wearing a hoodie staring pensively with blurred city lights" style="width:700px;height:500px;">
-        </div>
-        <results class="row movie-title-display"></results>
-        <button type="submit" id="zipBtn" class="button">Search Zip!</button>
-    </main>
-    <!-- main content end -->
+    <results>
+        search results DYNAMICALLY populate here tiled
+        <!-- these are placeholders -->
+        <div class="row small-up-2 medium-up-3 large-up-4">
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <div class="column">
+                <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                <h5>Showtimes</h5>
+            </div>
+            <!-- placeholders end  -->
+        </results>
+    <!-- main content end  -->
 
 
     <footer>
@@ -109,7 +112,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
 
 
-    <script src="assets\js\script.js"></script>
+    <script src="assets\js\local-search.js"></script>
 </body>
 
 </html>
