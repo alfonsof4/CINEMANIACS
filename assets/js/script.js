@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 42d4bb068e8e4d889e3e455c4f2d6e08721d8da6
 // foundation plugin for modal to run
 $(document).foundation();
 
@@ -25,10 +21,6 @@ const url = "https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8
 
 //Selecting Elements
 const searchBtn = document.querySelector("#search");
-<<<<<<< HEAD
-// const clearBtn = document.querySelector("#clear");
-=======
->>>>>>> 42d4bb068e8e4d889e3e455c4f2d6e08721d8da6
 const inputElement = document.querySelector("#inputValue");
 
 var movie = document.querySelector('#movie')
@@ -67,15 +59,10 @@ searchBtn.onclick = function (event) {
                 for (var i = 0; i < data.results.length; i++) {
 
                     var movieDiv = document.createElement('div')
-<<<<<<< HEAD
-                    // paulg: class attribute added to div for modal removal later
-                    movieDiv.setAttribute("class", "movieBox");
-=======
 
                 // paulg: class attribute added to div for modal removal later
                     movieDiv.setAttribute("class", "movieBox");
 
->>>>>>> 42d4bb068e8e4d889e3e455c4f2d6e08721d8da6
                     movieTitleDisplay.append(movieDiv)
                     var movieTitle = document.createElement('p');
                     //set class, id of each p
@@ -130,21 +117,6 @@ function toLocalSearchPage() {
     location.href = "local-search.html";
 }
 
-<<<<<<< HEAD
-function getZip(movieTitle) {
-    console.log(movieTitle);
-}
-
-// paulg: modal created to make sure user would like to clear their search history
-var openModal = document.getElementById("openModal");
-openModal.addEventListener("click", function() {
-  // local storage demos
-  localStorage.setItem("movies", "movieTitle");
-  localStorage.setItem("movie1", "movieTitle");
-  localStorage.setItem("movie2", "movieTitle");
-}, false);
-
-=======
 // paulg: modal created to make sure user would like to clear their search history
 var openModal = document.getElementById("openModal");
 openModal.addEventListener("click", function () {
@@ -152,7 +124,6 @@ openModal.addEventListener("click", function () {
 }, false);
 
 
->>>>>>> 42d4bb068e8e4d889e3e455c4f2d6e08721d8da6
 var clearHistory = document.getElementById("clearSearches");
 clearHistory.addEventListener('click', function() {
     console.log('Hello world');
