@@ -1,3 +1,4 @@
+
 // foundation plugin for modal to run
 $(document).foundation();
 
@@ -111,7 +112,7 @@ searchBtn.onclick = function (event) {
     });
 };
 
-
+// add to onclick for zipcode btn 
 //this links the second html created for the local showtimes page
 function toLocalSearchPage() {
     location.href = "local-search.html";

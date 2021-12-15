@@ -2,6 +2,10 @@
 
 // after user inputs zip in search bar dynamically display local showtimes in the results div
 
+//need it to search for showtimes of the previously selected movie title
+
+
+
 // declare variable and get url
 var apiKey = "xfkuutw67xzmu7cs8dk27w3j";
 var baseUrl = "http://data.tmsapi.com/v1.1";
@@ -36,6 +40,12 @@ $(document.body).append('<p>Found' + data.length + ' movies showing within 5 mil
         if (movie.ratings) { movieData += ' (' + movie.ratings[0].code + ') </div>' };
         $(document.body).append(movieData);
     });
+}
+
+//NOT FUNCTIONAL YET
+$("#back-to-main").on("click", backToMainPage())
+function backToMainPage(event) {
+    location.href = "index.html";
 }
 
 // getapi(apiUrl)
