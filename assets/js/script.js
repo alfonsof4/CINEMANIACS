@@ -1,3 +1,6 @@
+// foundation plugin for modal to run
+$(document).foundation();
+
 //using moment to display the current date
 var date = document.querySelector('#date');
 date.textContent = moment().format('dddd Do MMMM, YYYY');
@@ -12,7 +15,7 @@ const url = "https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8
 
 //Selecting Elements for the
 const searchBtn = document.querySelector("#search");
-const clearBtn = document.querySelector("#clear");
+// const clearBtn = document.querySelector("#clear");
 const inputElement = document.querySelector("#inputValue");
 // const movieSearchable = document.querySelector("#movies-searchable");
 
@@ -60,6 +63,8 @@ searchBtn.onclick = function (event) {
                 //loop through the data results and create each title as a p
                 for (var i = 0; i < data.results.length; i++) {
                     var movieDiv = document.createElement('div')
+                    // paulg: class attribute added to div for modal removal later
+                    movieDiv.setAttribute("class", "movieBox");
                     movieTitleDisplay.append(movieDiv)
                     var movieTitle = document.createElement('p');
                     movieTitle.setAttribute('class', 'box')
@@ -102,11 +107,19 @@ function getZip(movieTitle) {
     console.log(movieTitle);
 }
 
-//clear history button function
-clearBtn.onclick = function clearSearches() {
-    //change to a modal
-    if (confirm("Are you sure you want to clear all searches?")) {
-        window.localStorage.clear();
-    } else { }
-    location.reload();
-}
+// paulg: modal created to make sure user would like to clear their search history
+var openModal = document.getElementById("openModal");
+openModal.addEventListener("click", function() {
+  // local storage demos
+  localStorage.setItem("movies", "movieTitle");
+  localStorage.setItem("movie1", "movieTitle");
+  localStorage.setItem("movie2", "movieTitle");
+}, false);
+
+var clearHistory = document.getElementById("clearSearches");
+clearHistory.addEventListener('click', function() {
+    console.log('Hello world');
+    $(".movieBox").remove();
+    // window.location.reload(true);
+    window.localStorage.clear();
+}, false);
