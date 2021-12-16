@@ -91,27 +91,15 @@ h1 {
 }
 /* button styles end */
 
-/* .button {
-    box-shadow:inset 0px 0px 15px 3px #23395e;
-	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
-	background-color:#2e466e;
-	border-radius:17px;
-	border:1px solid #1f2f47;
-	display:inline-block;
-	cursor:pointer;
-	color:var(--font);
-	font-family:Arial;
-	font-size:15px;
-	padding:6px 13px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #263666;
-} */
+.top-bar {
+    background-color: var(--fourth);
+}
 
 /* results from movie search start */
+
 .populate-here {
     display: hide;
 }
-
 /* movie title search results  */
 .box {
     justify-content: center;
@@ -120,25 +108,25 @@ h1 {
     border-radius: 5px;
     font-size: 100%;
 }
-
 .movie-title-display {
     color: var(--font);
     width: 100%;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(6, 100px);
     grid-template-rows: 100px 100px 100px;
     grid-auto-flow: column;
 }
 
 /* results from movie search end  */
 
+/* details for movie selected from search results  */
 .detail {
     color: var(--font);
     text-align: center;
     display: inline;    
 }
 
+/* Clear searches confirm modal  */
 #exampleModal1 {
         padding: 20px 20px 20px 20px;
         -webkit-animation-name: modal-animation;
@@ -167,4 +155,8 @@ h1 {
             opacity: 1;
         }}
 
+
         
+footer {
+    background-color: var(--fourth);
+}
