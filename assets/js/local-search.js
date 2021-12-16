@@ -6,6 +6,8 @@
 // var shBtn = document.getElementById(searcHistory)
 // = JSON.parse(localStorage.getItem(localStorage.key(localStorage.length - 1))).name
 
+var data = JSON.parse(localStorage.getItem("title"));
+
 // declare variable and get url
 var apiKey = "xfkuutw67xzmu7cs8dk27w3j";
 var baseUrl = "http://data.tmsapi.com/v1.1";
@@ -22,7 +24,12 @@ function movieSearch(e) {
 	//send off the query
 	$.ajax({
 		url: showtimesUrl,
-		data: { startDate: today, zip: zip, jsonp: "dataHandler", api_key: apiKey },
+		data: {
+			startDate: today,
+			zip: zip,
+			jsonp: "dataHandler",
+			api_key: apiKey,
+		},
 		dataType: "jsonp",
 	});
 }
@@ -49,11 +56,14 @@ function dataHandler(data) {
 	});
 }
 
-//NOT FUNCTIONAL YET
-// $("#back-to-main").on("click", backToMainPage())
-// function backToMainPage(event) {
-//     location.href = "index.html";
-// }
+//NF
+//back to main page btn var linked to html button id
+var backToMainBtn = document.getElementById("back-to-main");
+backToMainBtn.addEventListener("click", backToMain);
+//this links the first html created for the movie search page
+function backToMain() {
+	location.href = "index.html";
+}
 
 // getapi(apiUrl)
 $("#search").click(movieSearch); // jquery version of below
