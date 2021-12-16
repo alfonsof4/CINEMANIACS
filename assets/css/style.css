@@ -1,32 +1,128 @@
+/* global styling */
 * {
+    margin: 2px;
+    padding: 2px;
+    box-sizing: border-box;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: var(--font);
 }
+/* html {
+    font: var(--font);
+} */
+:root {
+    --font: rgb(206, 217, 235);
+    --first: rgb(27, 58, 75);
+    --second: rgb(33, 47, 69);
+    --third: rgb(39, 38, 64);
+    --fourth: rgb(49, 34, 68);
+    --fifth: rgb(62, 31, 71);
+    --sixth: rgb(77, 25, 77);
+}
+
+body {
+    background-color: var(--first);
+    color: var(--font);
+}
+/* global styling end  */
+
+/* Page title  */
+.css-3d-text {
+    font-size: 79px;
+    color: #5f45d1;
+    font-family: Impact, Charcoal, sans-serif;
+    text-shadow: 0px 0px 0 rgb(88,62,202),
+                 1px 1px 0 rgb(82,56,196),
+                 2px 2px 0 rgb(75,49,189),
+                 3px 3px 0 rgb(69,43,183),
+                 4px 4px 0 rgb(62,36,176),
+                 5px 5px 0 rgb(56,30,170),
+                 6px 6px 0 rgb(49,23,163),
+                 7px 7px 0 rgb(42,16,156),
+                 8px 8px 0 rgb(36,10,150),
+                 9px 9px 0 rgb(29,3,143),
+                 10px 10px 0 rgb(23,-3,137),
+                 11px 11px 0 rgb(16,-10,130),
+                 12px 12px  0 rgb(9,-17,123),
+                 13px 13px 12px rgba(243,201,245,0.49),
+                 13px 13px 1px rgba(243,201,245,0.5),
+                 0px 0px 12px rgba(243,201,245,.2);
+}
+
+h1 {
+    color: var(--font);
+}
+
+/* search for a movie box style start */
+.panel.callout {
+    background: var(--fourth);
+}
+/* Callout header */
+.callout-header {
+    padding: 25px 15px;
+    background: var(--sixth);
+    font-size: 30px;
+    color: var(--font);
+  }
+/* search for a movie box style end */
+
+/* button styles start */
+.btn, .button {
+	box-shadow:inset 0px 0px 15px 3px #23395e;
+	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	background-color:#2e466e;
+	border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:var(--font);
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.btn, .button :hover {
+	background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+	background-color:#415989;
+}
+.btn, .button:active {
+	position:relative;
+	top:1px;
+}
+/* button styles end */
+
+/* .button {
+    box-shadow:inset 0px 0px 15px 3px #23395e;
+	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	background-color:#2e466e;
+	border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:var(--font);
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+} */
 
 /* results from movie search start */
 .populate-here {
     display: hide;
 }
+
+/* movie title search results  */
 .box {
     justify-content: center;
-    background-color: #444;
-    color: #fff;
+    background-color: var(--fifth);
+    color: var(--font);
     border-radius: 5px;
     font-size: 100%;
 }
 
-.box:nth-child(even) {
-    background-color: #ccc;
-    color: #000;
-}
-
-.clear-button {
-    padding: 10px;
-    width: 7em;
-    margin: 5px;
-    border-radius: 10px;
-}
-
 .movie-title-display {
+    color: var(--font);
     width: 100%;
     display: grid;
     grid-gap: 10px;
@@ -35,17 +131,40 @@
     grid-auto-flow: column;
 }
 
-.clear-history {
-    background-color: #FA8BFF;
-    background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
-    transition: all .5s ease-out;  
-    background-size: 1px 100px; 
-    background-position: 0px -10px;
-}
-
 /* results from movie search end  */
 
 .detail {
+    color: var(--font);
     text-align: center;
     display: inline;    
 }
+
+#exampleModal1 {
+        padding: 20px 20px 20px 20px;
+        -webkit-animation-name: modal-animation;
+        -webkit-animation-duration: 0.5s;
+        animation-name: modal-animation;
+        animation-duration: 0.5s;
+    }
+
+    @-webkit-keyframes modal-animation {
+        from {
+            top: -100px;
+            opacity: 0;
+        }
+        to {
+            top: 0px;
+            opacity: 1;
+        }
+    }
+    @keyframes modal-animation {
+        from {
+            top: -100px;
+            opacity: 0;
+        }
+        to {
+            top: 0px;
+            opacity: 1;
+        }}
+
+        
