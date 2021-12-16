@@ -21,7 +21,7 @@ $("#zipBtn").hide();
 //Defining the intial value
 const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
 const url =
-	"https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
+    "https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
 
 //Selecting Elements
 const searchBtn = document.querySelector("#search");
@@ -119,7 +119,7 @@ searchBtn.onclick = function (event) {
 
                                 // calls function to commit title to local storage 
                                 saveRecentSearches(title.textContent);
-                                
+
                                 //reveals the zipBtn that will redirect to the local search page
                                 $('#zipBtn').show();
 
@@ -132,7 +132,7 @@ searchBtn.onclick = function (event) {
                 });
             } else {
                 // reset the page to default after error modal
-                
+
                 location.reload();
             }
         });
@@ -142,13 +142,13 @@ searchBtn.onclick = function (event) {
 // paulg: modal created to make sure user would like to clear their search history
 var openModal = document.getElementById("openModal");
 openModal.addEventListener(
-	"click",
-	function () {
-		localStorage.setItem("movies", "movieTitle");
-		$("#modalText").text("");
-		$("#finalAnswer").show();
-	},
-	false
+    "click",
+    function () {
+        localStorage.setItem("movies", "movieTitle");
+        $("#modalText").text("");
+        $("#finalAnswer").show();
+    },
+    false
 );
 
 //link zip button to an event listenter and redirect to local search page on click
@@ -156,24 +156,24 @@ var zipBtn = document.getElementById("zipBtn")
 zipBtn.addEventListener("click", toLocalSearchPage)
 //this links the second html created for the local showtimes page
 function toLocalSearchPage() {
-	location.href = "local-search.html";
+    location.href = "local-search.html";
 }
 
 var clearHistory = document.getElementById("clearSearches");
 clearHistory.addEventListener(
 
-	"click",
-	function (event) {
-		$(".movieBox").remove();
-		// paulg: removes displayed movie detail and detailText classes
-		$(".detail").remove();
-		$(".detailText").remove();
-		$("#modalText").text("");
-		$(".placeholder").show();
-		$("#openModal").hide();
-		window.localStorage.clear();
-	},
-	false
+    "click",
+    function (event) {
+        $(".movieBox").remove();
+        // paulg: removes displayed movie detail and detailText classes
+        $(".detail").remove();
+        $(".detailText").remove();
+        $("#modalText").text("");
+        $(".placeholder").show();
+        $("#openModal").hide();
+        window.localStorage.clear();
+    },
+    false
 );
 
 

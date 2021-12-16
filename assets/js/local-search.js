@@ -14,7 +14,7 @@ var baseUrl = "http://data.tmsapi.com/v1.1";
 var showtimesUrl = baseUrl + '/movies/showings';
 var zip;
 var d = new Date();
-var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+var today = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
 
 //searches movie showtimes near zip value
 function movieSearch(e) {
@@ -24,21 +24,22 @@ function movieSearch(e) {
     //send off the query
     $.ajax({
         url: showtimesUrl,
-            data: { startDate: today,
-                zip: zip,
-                jsonp: "dataHandler",
-                api_key: apiKey
-            },
+        data: {
+            startDate: today,
+            zip: zip,
+            jsonp: "dataHandler",
+            api_key: apiKey
+        },
         dataType: "jsonp",
     });
 };
 
 //returns the data from the search
 function dataHandler(data) {
-$(document.body).append('<p>Found' + data.length + ' movies showing within 5 miles of ' + zip+':</p>');
-    console.log("data:",data)
+    $(document.body).append('<p>Found' + data.length + ' movies showing within 5 miles of ' + zip + ':</p>');
+    console.log("data:", data)
     var movies = data.hits;
-    $.each(data, function(index, movie) {  // this is a jquery for each loop
+    $.each(data, function (index, movie) {  // this is a jquery for each loop
         var movieData = `<div class="tile"><br/>`;
         movieData += movie.title;
         if (movie.ratings) { movieData += ' (' + movie.ratings[0].code + ') </div>' };
@@ -52,7 +53,7 @@ var backToMainBtn = document.getElementById("back-to-main")
 backToMainBtn.addEventListener("click", backToMain)
 //this links the first html created for the movie search page
 function backToMain() {
-	location.href = "index.html";
+    location.href = "index.html";
 }
 
 
