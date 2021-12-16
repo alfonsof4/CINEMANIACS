@@ -64,7 +64,7 @@ searchBtn.onclick = function (event) {
 
 					//clear data display window of any previous searches
 					movieTitleDisplay.textContent = "";
-
+					// paulg: if else statement added in case no movies are found in the search
 					if (data.results.length <= 0) {
 						$("#finalAnswer").hide();
 						$("#modalText").text(
@@ -125,11 +125,7 @@ searchBtn.onclick = function (event) {
 					}
 				});
 			} else {
-				//change to modal
-				// alert("error:" + res.statusText);
-				// reset the page to default after error
 				console.log(res);
-				// $("#modalText").textContent(res.statusText);
 				$("#exampleModal1").foundation("open");
 			}
 		});
