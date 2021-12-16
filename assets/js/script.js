@@ -1,33 +1,34 @@
-
-// foundation plugin for modal to run
+// paulg: foundation plugin for modal to run
 $(document).foundation();
 
 //using moment to display the current date
-var date = document.querySelector('#date');
-date.textContent = moment().format('dddd Do MMMM, YYYY');
+var date = document.querySelector("#date");
+date.textContent = moment().format("dddd Do MMMM, YYYY");
 
 //setting a var to display movie results later
-var movieTitleDisplay = document.querySelector('.movie-title-display')
+var movieTitleDisplay = document.querySelector(".movie-title-display");
 //setting var for the movie details after a title is clicked
-var detailsPopulate = document.querySelector('.details-populate')
+var detailsPopulate = document.querySelector(".details-populate");
 
 //hides the results grid div on load
-$('.movie-title-display').hide();
+$(".movie-title-display").hide();
 //hides the zip search button on load
-$('#zipBtn').hide();
+$("#zipBtn").hide();
 
 //Defining the intial value
 const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
-const url = "https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
+const url =
+	"https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
 
 //Selecting Elements
 const searchBtn = document.querySelector("#search");
 const inputElement = document.querySelector("#inputValue");
 
-var movie = document.querySelector('#movie')
+var movie = document.querySelector("#movie");
 
 //executes search, clears input value
 searchBtn.onclick = function (event) {
+
     event.preventDefault();
     //takes the input from the searchbar and applies it to the api url
     const value = inputElement.value;
@@ -120,23 +121,32 @@ searchBtn.onclick = function (event) {
 //link zip button to an event listenter and redirect to local search page on click
 var zipBtn = document.getElementById("zipBtn")
 zipBtn.addEventListener("click", toLocalSearchPage)
+
 //this links the second html created for the local showtimes page
 function toLocalSearchPage() {
-    location.href = "local-search.html";
+	location.href = "local-search.html";
 }
 
-// // paulg: modal created to make sure user would like to clear their search history
-// var openModal = document.getElementById("openModal");
-// openModal.addEventListener("click", function () {
 
-// }, false);
-
+// paulg: modal created to make sure user would like to clear their search history
+var openModal = document.getElementById("openModal");
+openModal.addEventListener(
+	"click",
+	function () {
+		localStorage.setItem("movies", "movieTitle");
+	},
+	false
+);
 
 var clearHistory = document.getElementById("clearSearches");
-clearHistory.addEventListener('click', function() {
-    // console.log('Hello world');
-    // $(".movieBox").remove();
-    // window.location.reload(true);
-    window.localStorage.clear();
-    location.reload();
-}, false);
+clearHistory.addEventListener(
+	"click",
+	function (event) {
+		// event.preventDefault();
+		$(".movieBox").remove();
+		$(".placeholder").css("display", "");
+		window.localStorage.clear();
+	},
+	false
+);
+
