@@ -150,13 +150,16 @@ openModal.addEventListener(
 );
 
 //link zip button to an event listenter and redirect to local search page on click
-var zipBtn = document.getElementById("zipBtn");
-zipBtn.addEventListener("click", toLocalSearchPage);
+// var zipBtn = document.getElementById("zipBtn");
+// var toLocalSearchPage = (location.href = "./local-search.html");
+// zipBtn.addEventListener("click", function () {
+// 	toLocalSearchPage;
+// });
 
 //this links the second html created for the local showtimes page
-function toLocalSearchPage() {
-	location.href = "local-search.html";
-}
+// function toLocalSearchPage() {
+// 	location.href = "./local-search.html";
+// }
 
 var clearHistory = document.getElementById("clearSearches");
 clearHistory.addEventListener(
