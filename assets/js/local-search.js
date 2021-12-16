@@ -6,8 +6,6 @@
 // var shBtn = document.getElementById(searcHistory)
 // = JSON.parse(localStorage.getItem(localStorage.key(localStorage.length - 1))).name
 
-var data = JSON.parse(localStorage.getItem("title"));
-
 // declare variable and get url
 // paulg: hiding the api key. ;)
 var apiKey = config.zipKey;
