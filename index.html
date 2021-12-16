@@ -6,9 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- paul g link start  -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous"> -->
-    <!-- paul g: above stylesheet added for modal to center.. -->
+		<!-- paul g link start  -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css"
+			crossorigin="anonymous"
+		/>
+		<!-- paul g: above stylesheet added for modal to center -->
     <!-- commented out, left for reference  -->
 
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
@@ -57,21 +61,43 @@
                             <button type="submit" id="search" class="button">Search Now!</button>
                             <!-- <button type="clear" id="clear" class="button">Clear Searches</button> -->
 
-                            <!-- paulg: clear searches modal -->
-                            <button class="clear-button button" data-open="exampleModal1" id="openModal">Clear
-                                Searches</button>
-                            <div class="reveal" id="exampleModal1" data-reveal>
-                                <h1>Is that your final answer?</h1>
-                                <button class="close-button" data-close aria-label="Close modal" type="button">
-                                    <span aria-hidden="true">&times;</span>
+                            <button
+                            class="clear-button button"
+                            type="button"
+                            data-open="exampleModal1"
+                            id="openModal"
+                        >
+                            Clear Searches
+                        </button>
+                        <!-- paulg: clear searches modal -->
+                        <div class="reveal" id="exampleModal1" data-reveal>
+                            <h1>Is that your final answer?</h1>
+                            <button
+                                class="close-button"
+                                data-close
+                                aria-label="Close modal"
+                                type="button"
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div style="display: flex; justify-content: center">
+                                <button
+                                    class="clear-button button"
+                                    type="button"
+                                    id="clearSearches"
+                                    data-close="exampleModal1"
+                                >
+                                    Yes
                                 </button>
-                                <div style="display:flex; justify-content: center;">
-                                    <button class="clear-button button" type="button" id="clearSearches"
-                                        data-close="exampleModal1">Yes</button>
-                                    <button class="clear-button button" data-close="exampleModal1">No</button>
-                                </div>
+                                <button
+                                    class="clear-button button"
+                                    data-close="exampleModal1"
+                                >
+                                    No
+                                </button>
                             </div>
-                            <!-- paulg: clear searches modal end -->
+                        </div>
+                        <!-- paulg: clear searches modal end -->
 
                         </div>
                     </div>

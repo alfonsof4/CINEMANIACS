@@ -33,6 +33,7 @@ searchBtn.onclick = function (event) {
     const value = inputElement.value;
     const newUrl = url + "&query=" + value;
 
+
     // save to local storage call here?
 
     //clear the input value box
@@ -97,6 +98,9 @@ searchBtn.onclick = function (event) {
 
                         detailsPopulate.prepend(title, info)
 
+                        // commit to local storage 
+                        window.localStorage.setItem(title.textContent, info.textContent)
+                        
                         //reveals the zipBtn that will redirect to the local search page
                         $('#zipBtn').show();
                     })
@@ -112,6 +116,7 @@ searchBtn.onclick = function (event) {
 };
 
 
+
 //link zip button to an event listenter and redirect to local search page on click
 var zipBtn = document.getElementById("zipBtn")
 zipBtn.addEventListener("click", toLocalSearchPage)
@@ -120,17 +125,17 @@ function toLocalSearchPage() {
     location.href = "local-search.html";
 }
 
-// paulg: modal created to make sure user would like to clear their search history
-var openModal = document.getElementById("openModal");
-openModal.addEventListener("click", function () {
-    localStorage.setItem("movies", "movieTitle");
-}, false);
+// // paulg: modal created to make sure user would like to clear their search history
+// var openModal = document.getElementById("openModal");
+// openModal.addEventListener("click", function () {
+
+// }, false);
 
 
 var clearHistory = document.getElementById("clearSearches");
 clearHistory.addEventListener('click', function() {
-    console.log('Hello world');
-    $(".movieBox").remove();
+    // console.log('Hello world');
+    // $(".movieBox").remove();
     // window.location.reload(true);
     window.localStorage.clear();
     location.reload();
