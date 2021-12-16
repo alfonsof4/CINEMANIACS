@@ -18,9 +18,9 @@ $(".movie-title-display").hide();
 $("#zipBtn").hide();
 
 //Defining the intial value
-const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
-const url =
-	"https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
+// paulg: hiding the api key. ;)
+const API_KEY = config.movieKey;
+const url = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY;
 
 //Selecting Elements
 const searchBtn = document.querySelector("#search");

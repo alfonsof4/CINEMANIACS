@@ -9,7 +9,8 @@
 var data = JSON.parse(localStorage.getItem("title"));
 
 // declare variable and get url
-var apiKey = "xfkuutw67xzmu7cs8dk27w3j";
+// paulg: hiding the api key. ;)
+var apiKey = config.zipKey;
 var baseUrl = "http://data.tmsapi.com/v1.1";
 var showtimesUrl = baseUrl + "/movies/showings";
 var zip;
