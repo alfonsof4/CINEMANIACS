@@ -6,7 +6,7 @@
 // var shBtn = document.getElementById(searcHistory)
 // = JSON.parse(localStorage.getItem(localStorage.key(localStorage.length - 1))).name
 
-window.localStorage.getItem("key");
+var data = JSON.parse(localStorage.getItem("title"));
 
 // declare variable and get url
 var apiKey = "xfkuutw67xzmu7cs8dk27w3j";
@@ -46,11 +46,15 @@ $(document.body).append('<p>Found' + data.length + ' movies showing within 5 mil
     });
 }
 
-//NOT FUNCTIONAL YET
-// $("#back-to-main").on("click", backToMainPage())
-// function backToMainPage(event) {
-//     location.href = "index.html";
-// }
+//NF
+//back to main page btn var linked to html button id
+var backToMainBtn = document.getElementById("back-to-main")
+backToMainBtn.addEventListener("click", backToMain)
+//this links the first html created for the movie search page
+function backToMain() {
+	location.href = "index.html";
+}
+
 
 // getapi(apiUrl)
 $('#search').click(movieSearch) // jquery version of below

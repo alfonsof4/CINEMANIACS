@@ -12,6 +12,7 @@ var movieTitleDisplay = document.querySelector(".movie-title-display");
 //setting var for the movie details after a title is clicked
 var detailsPopulate = document.querySelector(".details-populate");
 
+
 //hides the results grid div on load
 $(".movie-title-display").hide();
 //hides the zip search button on load
@@ -153,7 +154,6 @@ openModal.addEventListener(
 //link zip button to an event listenter and redirect to local search page on click
 var zipBtn = document.getElementById("zipBtn")
 zipBtn.addEventListener("click", toLocalSearchPage)
-
 //this links the second html created for the local showtimes page
 function toLocalSearchPage() {
 	location.href = "local-search.html";
