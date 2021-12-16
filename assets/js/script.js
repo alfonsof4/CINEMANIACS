@@ -31,88 +31,109 @@ var movie = document.querySelector("#movie");
 //executes search, clears input value
 searchBtn.onclick = function (event) {
 	event.preventDefault();
-	// paulg: "clear searches" button to pop up when search button is clicked
-	$("#openModal").show();
 	//takes the input from the searchbar and applies it to the api url
 	const value = inputElement.value;
-	const newUrl = url + "&query=" + value;
+	// paulg: if else statement added so the api is only called when there are values in the text field
+	if (value === "") {
+		$("#finalAnswer").hide();
+		$("#modalText").text("Please submit a valid movie title");
+		$("#exampleModal1").foundation("open");
+	} else {
+		// paulg: "clear searches" button to pop up when search button is clicked
+		$("#openModal").show();
+		const newUrl = url + "&query=" + value;
 
-	// save to local storage call here?
+		// save to local storage call here?
 
-	//clear the input value box
-	inputElement.value = "";
+		//clear the input value box
+		inputElement.value = "";
 
-	//hides the populate-here placeholders on click. need to change it to only hide on successful search execution not on empty clicks or no returns
-	$("#populate-here").hide();
-	$(".placeholder").hide();
+		//hides the populate-here placeholders on click. need to change it to only hide on successful search execution not on empty clicks or no returns
+		$("#populate-here").hide();
+		$(".placeholder").hide();
 
-	//shows the results div
-	$(".movie-title-display").show();
+		//shows the results div
+		$(".movie-title-display").show();
 
-	//getResults
-	//search for movie entered into search and return the data
-	fetch(newUrl).then(function (res) {
-		if (res.ok) {
-			res.json().then(function (data) {
-				console.log(data);
+		//getResults
+		//search for movie entered into search and return the data
+		fetch(newUrl).then(function (res) {
+			if (res.ok) {
+				res.json().then(function (data) {
+					console.log(data);
 
-				//clear data display window of any previous searches
-				movieTitleDisplay.textContent = "";
+					//clear data display window of any previous searches
+					movieTitleDisplay.textContent = "";
 
-				//loop through the data results and create each title as a p
-				for (var i = 0; i < data.results.length; i++) {
-					var movieDiv = document.createElement("div");
-
-					// paulg: class attribute added to div for modal removal later
-					movieDiv.setAttribute("class", "movieBox");
-
-					movieTitleDisplay.append(movieDiv);
-					var movieTitle = document.createElement("p");
-					//set class, id of each p
-					movieTitle.setAttribute("class", "box");
-					movieTitle.setAttribute("id", data.results[i].id);
-					//add the text content from the returned data titles and lsit them
-					movieTitle.textContent = data.results[i].title;
-					movieDiv.append(movieTitle);
-
-					//on target click clear the results and display info on the movie selected, showing the tile as h1 and info as p
-					movieTitle.addEventListener("click", function (e) {
-						//hides the populate-here placeholders again to display the clicked detail and this time the movie-title-display grid
-						$("#populate-here").hide();
-						$(".placeholder").hide();
-						$(".movie-title-display").hide();
-
-						//clears the previous titles
-						movieTitleDisplay.textContent = "";
-						console.log(data.results);
-						//pulls the detailed data from the clicked title
-						var filtered = data.results.filter(
-							(item) => item.id == e.target.id
+					if (data.results.length <= 0) {
+						$("#finalAnswer").hide();
+						$("#modalText").text(
+							"No movies found. Please correct your movie title selection."
 						);
-						// console.log(filtered);
+						$("#openModal").hide();
+						$("#exampleModal1").foundation("open");
+						$(".placeholder").show();
+					} else {
+						//loop through the data results and create each title as a p
+						for (var i = 0; i < data.results.length; i++) {
+							var movieDiv = document.createElement("div");
 
-						//creates the elements and displays the detailed information
-						var title = document.createElement("h1");
-						title.setAttribute("class", "detail");
-						title.textContent = filtered[0].title;
-						var info = document.createElement("p");
-						info.textContent = filtered[0].overview;
-						//reveals the zipBtn that will redirect to the local search page
-						$("#zipBtn").show();
+							// paulg: class attribute added to div for modal removal later
+							movieDiv.setAttribute("class", "movieBox");
 
-						detailsPopulate.prepend(title, info);
+							movieTitleDisplay.append(movieDiv);
+							var movieTitle = document.createElement("p");
+							//set class, id of each p
+							movieTitle.setAttribute("class", "box");
+							movieTitle.setAttribute("id", data.results[i].id);
+							//add the text content from the returned data titles and list them
+							movieTitle.textContent = data.results[i].title;
+							movieDiv.append(movieTitle);
 
-						// create btn for showtime search and append to mtd
-					});
-				}
-			});
-		} else {
-			//change to modal
-			alert("error:" + res.statusText);
-			// reset the page to default after error
-			location.reload();
-		}
-	});
+							//on target click clear the results and display info on the movie selected, showing the tile as h1 and info as p
+							movieTitle.addEventListener("click", function (e) {
+								//hides the populate-here placeholders again to display the clicked detail and this time the movie-title-display grid
+								$("#populate-here").hide();
+								$(".placeholder").hide();
+								$(".movie-title-display").hide();
+
+								//clears the previous titles
+								movieTitleDisplay.textContent = "";
+								console.log(data.results);
+								//pulls the detailed data from the clicked title
+								var filtered = data.results.filter(
+									(item) => item.id == e.target.id
+								);
+								// console.log(filtered);
+
+								//creates the elements and displays the detailed information
+								var title = document.createElement("h1");
+								title.setAttribute("class", "detail");
+								title.textContent = filtered[0].title;
+								var info = document.createElement("p");
+								// paulg: adding class to p tag to be able to remove both detail, and detailText class later
+								info.setAttribute("class", "detailText");
+								info.textContent = filtered[0].overview;
+								//reveals the zipBtn that will redirect to the local search page
+								$("#zipBtn").show();
+
+								detailsPopulate.prepend(title, info);
+
+								// create btn for showtime search and append to mtd
+							});
+						}
+					}
+				});
+			} else {
+				//change to modal
+				// alert("error:" + res.statusText);
+				// reset the page to default after error
+				console.log(res);
+				// $("#modalText").textContent(res.statusText);
+				$("#exampleModal1").foundation("open");
+			}
+		});
+	}
 };
 
 //this links the second html created for the local showtimes page
@@ -126,6 +147,8 @@ openModal.addEventListener(
 	"click",
 	function () {
 		localStorage.setItem("movies", "movieTitle");
+		$("#modalText").text("");
+		$("#finalAnswer").show();
 	},
 	false
 );
@@ -134,8 +157,11 @@ var clearHistory = document.getElementById("clearSearches");
 clearHistory.addEventListener(
 	"click",
 	function (event) {
-		// event.preventDefault();
 		$(".movieBox").remove();
+		// paulg: removes displayed movie detail and detailText classes
+		$(".detail").remove();
+		$(".detailText").remove();
+		$("#modalText").text("");
 		$(".placeholder").show();
 		$("#openModal").hide();
 		window.localStorage.clear();

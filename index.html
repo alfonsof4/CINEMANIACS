@@ -69,6 +69,7 @@
 												id="inputValue"
 												type="text"
 												placeholder="Enter Movie Title..."
+												required
 											/>
 										</label>
 									</div>
@@ -86,7 +87,8 @@
 										</button>
 										<!-- paulg: clear searches modal -->
 										<div class="reveal" id="exampleModal1" data-reveal>
-											<h1>Is that your final answer?</h1>
+											<h1 id="finalAnswer">Is that your final answer?</h1>
+											<h1 id="modalText"></h1>
 											<button
 												class="close-button"
 												data-close
@@ -107,6 +109,7 @@
 												<button
 													class="clear-button button"
 													data-close="exampleModal1"
+													type="button"
 												>
 													No
 												</button>
