@@ -1,5 +1,7 @@
 // paulg: foundation plugin for modal to run
 $(document).foundation();
+// paulg: hiding "clear searches" button when page loads but will come up when the the searches button is clicked
+$("#openModal").hide();
 
 //using moment to display the current date
 var date = document.querySelector("#date");
@@ -29,6 +31,8 @@ var movie = document.querySelector("#movie");
 //executes search, clears input value
 searchBtn.onclick = function (event) {
 	event.preventDefault();
+	// paulg: "clear searches" button to pop up when search button is clicked
+	$("#openModal").show();
 	//takes the input from the searchbar and applies it to the api url
 	const value = inputElement.value;
 	const newUrl = url + "&query=" + value;
@@ -132,7 +136,8 @@ clearHistory.addEventListener(
 	function (event) {
 		// event.preventDefault();
 		$(".movieBox").remove();
-		$(".placeholder").css("display", "");
+		$(".placeholder").show();
+		$("#openModal").hide();
 		window.localStorage.clear();
 	},
 	false
