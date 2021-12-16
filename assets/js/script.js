@@ -94,12 +94,11 @@ searchBtn.onclick = function (event) {
                         title.textContent = filtered[0].title
                         var info = document.createElement('p')
                         info.textContent = filtered[0].overview
-                        //reveals the zipBtn that will redirect to the local search page
-                        $('#zipBtn').show();
 
                         detailsPopulate.prepend(title, info)
 
-                        // create btn for showtime search and append to mtd 
+                        //reveals the zipBtn that will redirect to the local search page
+                        $('#zipBtn').show();
                     })
                 }
             });
@@ -112,7 +111,10 @@ searchBtn.onclick = function (event) {
     });
 };
 
-// add to onclick for zipcode btn 
+
+//link zip button to an event listenter and redirect to local search page on click
+var zipBtn = document.getElementById("zipBtn")
+zipBtn.addEventListener("click", toLocalSearchPage)
 //this links the second html created for the local showtimes page
 function toLocalSearchPage() {
     location.href = "local-search.html";

@@ -14,6 +14,7 @@ var zip;
 var d = new Date();
 var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
 
+//searches movie showtimes near zip value
 function movieSearch(e) {
     e.preventDefault()
     zip = $('#inputValue').val().trim()
@@ -30,6 +31,7 @@ function movieSearch(e) {
     });
 };
 
+//returns the data from the search
 function dataHandler(data) {
 $(document.body).append('<p>Found' + data.length + ' movies showing within 5 miles of ' + zip+':</p>');
     console.log("data:",data)
@@ -43,10 +45,10 @@ $(document.body).append('<p>Found' + data.length + ' movies showing within 5 mil
 }
 
 //NOT FUNCTIONAL YET
-$("#back-to-main").on("click", backToMainPage())
-function backToMainPage(event) {
-    location.href = "index.html";
-}
+// $("#back-to-main").on("click", backToMainPage())
+// function backToMainPage(event) {
+//     location.href = "index.html";
+// }
 
 // getapi(apiUrl)
 $('#search').click(movieSearch) // jquery version of below
