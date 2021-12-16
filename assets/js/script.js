@@ -31,6 +31,7 @@ var movie = document.querySelector('#movie')
 //executes search, clears input value
 searchBtn.onclick = function (event) {
     event.preventDefault();
+
     //takes the input from the searchbar and applies it to the api url
     const value = inputElement.value;
     const newUrl = url + "&query=" + value;
@@ -43,7 +44,6 @@ searchBtn.onclick = function (event) {
     } else {
         // paulg: "clear searches" button to pop up when search button is clicked
         $("#openModal").show();
-
 
         //clear the input value box
         inputElement.value = '';
@@ -116,19 +116,22 @@ searchBtn.onclick = function (event) {
 
                                 detailsPopulate.prepend(title, info)
 
-                                // commit to local storage 
-                                window.localStorage.setItem(title.textContent, info.textContent)
-
+                                // calls function to commit title to local storage 
+                                saveRecentSearches(title.textContent);
+                                
                                 //reveals the zipBtn that will redirect to the local search page
                                 $('#zipBtn').show();
+
+                                //back to search button
+                                //onclick detailsPopulate.textContent = ''
+                                //return to 
                             })
                         }
                     }
                 });
             } else {
-                //change to modal
-                alert("error:" + res.statusText);
-                // reset the page to default after error
+                // reset the page to default after error modal
+                
                 location.reload();
             }
         });
@@ -146,8 +149,6 @@ openModal.addEventListener(
 	},
 	false
 );
-
-
 
 //link zip button to an event listenter and redirect to local search page on click
 var zipBtn = document.getElementById("zipBtn")
@@ -175,17 +176,43 @@ clearHistory.addEventListener(
 	false
 );
 
-//pull from local history
-function allStorage() {
 
-    var values = [],
-        keys = Object.keys(localStorage),
-        i = keys.length;
+//save searches to local storage
+function saveRecentSearches(movie) {
+    recentSearchHistory = localStorage.getItem("title") ?
+        JSON.parse(localStorage.getItem("title")) : [];
+    recentSearchHistory.push(movie)
 
-    while (i--) {
-        values.push(localStorage.getItem(keys[i]));
+    // keeps array at length of 5 
+    if (recentSearchHistory.length > 5) {
+        recentSearchHistory.shift();
     }
-    console.log(values)
+    localStorage.setItem("title", JSON.stringify(recentSearchHistory))
+    clearBtns()
+    getSearches()
 }
-//loads history in console on load
-allStorage()
+
+getSearches()
+
+//display prior searches in the recent-searches div as buttons
+function getSearches() {
+    var data = JSON.parse(localStorage.getItem("title"));
+    if (data === null) {
+        document.getElementById("search-history").innerHTML = ("No Recent Searches");
+    } else {
+        data = JSON.parse(localStorage.getItem("title"));
+        for (i = 0; i < data.length; i++) {
+            var btn = document.createElement("button")
+            btn.textContent = data[i]
+            document.querySelector(".movies .btn-group").appendChild(btn)
+            btn.className = "btn";
+            btn.attributes = "";
+        }
+    }
+}
+
+// function is called in the saverecentsearches, clears button array to replace with new searches 
+function clearBtns() {
+    const recentBtns = document.querySelector("#search-history");
+    recentBtns.innerHTML = ""
+}

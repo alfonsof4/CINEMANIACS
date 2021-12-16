@@ -6,6 +6,7 @@
 // var shBtn = document.getElementById(searcHistory)
 // = JSON.parse(localStorage.getItem(localStorage.key(localStorage.length - 1))).name
 
+window.localStorage.getItem("key");
 
 // declare variable and get url
 var apiKey = "xfkuutw67xzmu7cs8dk27w3j";
