@@ -30,7 +30,6 @@ var movie = document.querySelector('#movie')
 
 //executes search, clears input value
 searchBtn.onclick = function (event) {
-
     event.preventDefault();
     //takes the input from the searchbar and applies it to the api url
     const value = inputElement.value;
@@ -139,13 +138,13 @@ searchBtn.onclick = function (event) {
 // paulg: modal created to make sure user would like to clear their search history
 var openModal = document.getElementById("openModal");
 openModal.addEventListener(
-    "click",
-    function () {
-        localStorage.setItem("movies", "movieTitle");
-        $("#modalText").text("");
-        $("#finalAnswer").show();
-    },
-    false
+	"click",
+	function () {
+		localStorage.setItem("movies", "movieTitle");
+		$("#modalText").text("");
+		$("#finalAnswer").show();
+	},
+	false
 );
 
 
@@ -161,18 +160,19 @@ function toLocalSearchPage() {
 
 var clearHistory = document.getElementById("clearSearches");
 clearHistory.addEventListener(
-    "click",
-    function (event) {
-        $(".movieBox").remove();
-        // paulg: removes displayed movie detail and detailText classes
-        $(".detail").remove();
-        $(".detailText").remove();
-        $("#modalText").text("");
-        $(".placeholder").show();
-        $("#openModal").hide();
-        window.localStorage.clear();
-    },
-    false
+
+	"click",
+	function (event) {
+		$(".movieBox").remove();
+		// paulg: removes displayed movie detail and detailText classes
+		$(".detail").remove();
+		$(".detailText").remove();
+		$("#modalText").text("");
+		$(".placeholder").show();
+		$("#openModal").hide();
+		window.localStorage.clear();
+	},
+	false
 );
 
 //pull from local history
