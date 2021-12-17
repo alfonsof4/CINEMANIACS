@@ -7,7 +7,8 @@
 // = JSON.parse(localStorage.getItem(localStorage.key(localStorage.length - 1))).name
 
 // declare variable and get url
-var apiKey = "xfkuutw67xzmu7cs8dk27w3j";
+// paulg: hiding the api key. ;)
+var apiKey = config.zipKey;
 var baseUrl = "http://data.tmsapi.com/v1.1";
 var showtimesUrl = baseUrl + "/movies/showings";
 var zip;
@@ -22,7 +23,12 @@ function movieSearch(e) {
 	//send off the query
 	$.ajax({
 		url: showtimesUrl,
-		data: { startDate: today, zip: zip, jsonp: "dataHandler", api_key: apiKey },
+		data: {
+			startDate: today,
+			zip: zip,
+			jsonp: "dataHandler",
+			api_key: apiKey,
+		},
 		dataType: "jsonp",
 	});
 }
@@ -49,11 +55,14 @@ function dataHandler(data) {
 	});
 }
 
-//NOT FUNCTIONAL YET
-// $("#back-to-main").on("click", backToMainPage())
-// function backToMainPage(event) {
-//     location.href = "index.html";
-// }
+//NF
+//back to main page btn var linked to html button id
+var backToMainBtn = document.getElementById("back-to-main");
+backToMainBtn.addEventListener("click", backToMain);
+//this links the first html created for the movie search page
+function backToMain() {
+	location.href = "index.html";
+}
 
 // getapi(apiUrl)
 $("#search").click(movieSearch); // jquery version of below
