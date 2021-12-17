@@ -57,12 +57,12 @@ function dataHandler(data) {
 
 //NF
 //back to main page btn var linked to html button id
-var backToMainBtn = document.getElementById("back-to-main");
-backToMainBtn.addEventListener("click", backToMain);
-//this links the first html created for the movie search page
-function backToMain() {
-	location.href = "index.html";
-}
+// var backToMainBtn = document.getElementById("back-to-main");
+// backToMainBtn.addEventListener("click", backToMain);
+// //this links the first html created for the movie search page
+// function backToMain() {
+// 	location.href = "index.html";
+// }
 
 // getapi(apiUrl)
 $("#search").click(movieSearch); // jquery version of below
