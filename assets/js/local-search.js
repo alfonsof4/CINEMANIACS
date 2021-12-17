@@ -5,6 +5,9 @@
 //need it to search for showtimes of the previously selected movie title
 // var shBtn = document.getElementById(searcHistory)
 // = JSON.parse(localStorage.getItem(localStorage.key(localStorage.length - 1))).name
+//using moment to display the current date
+var date = document.querySelector("#date");
+date.textContent = moment().format("dddd Do MMMM, YYYY");
 
 var data = JSON.parse(localStorage.getItem("title"));
 
