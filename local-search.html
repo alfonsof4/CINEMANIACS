@@ -11,119 +11,100 @@
     <link rel="stylesheet" href="assets\css\style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <title>SHOWTIMES NEAR YOU</title>
+    <title>CINEMANIACS Movies & Showtimes</title>
 </head>
 
 <!-- page body start  -->
 
-<body style="background-color: rgb(219, 12, 12); text-align: center;">
-
+<body style="text-align: center;">
     <!-- header start -->
     <header class="row">
         <div class="medium-3 large-3 columns">
             <div>
-                <!-- paulg: adding an a href on the logo so when clicked, it brings you back to the main page -->
-					<a href="/"
-                    ><img
-                        class="thumbnail"
-                        src="assets\images\charles-deluvio-lJJlaUWYrPE-unsplash.jpg"
-                        alt="placeholder logo"
-                        style="width: 165.5px; height: 250.5px"
-                /></a>
-                our logo here
+                <a href="/"></a><img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg" alt="placeholder logo"
+                    style="width:365.5px;height:230.5px;"></a>
             </div>
         </div>
         <div class="medium-6 large-6 columns">
             <div class="panel">
-                <h1>SHOWTIMES</h1>
+                <h1 class="css-3d-text">SHOWTIMES</h1>
                 <h2 id="date"></h2>
             </div>
         </div>
         <!-- search container start  -->
         <div class="medium-3 large-3 columns">
             <div class="panel callout secondary">
-                <form>
-                    <div class="row">
-                        <div class="small-12 columns">
-                            <label>Search For Showtimes In Your Area
-                                <input id="inputValue" type="text" aria-label="zip code input value" placeholder="Enter Zip Code...">
-                                <!-- </label>
-                            </div>
-                            <div class="small-12 columns">
-                            </label> -->
-                                <button type="submit" id="search" class="button">Search Now!</button>
-                                <button type="submit" id="back-to-main" class="button">Back to Main</button>
-
-                                <!-- modal code start -->
-                                <div class="reveal" id="exampleModal1" data-reveal>
-                                    <h1>Is that your final answer?</h1>
-                                    <button class="close-button" data-close aria-label="Close modal" type="button">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <div style="display:flex; justify-content: center;">
-                                        <button class="clear-button button" type="button" id="clearSearches"
-                                            data-close="exampleModal1">Yes</button>
-                                        <button class="clear-button button" type="button"
-                                            data-close="exampleModal1">No</button>
-                                    </div>
-                                </div>
-                                <!-- paulg: clear searches modal end -->
-
-                        </div>
+                <form class="row">
+                    <div class="callout-header">
+                        Search For Showtimes In Your Area
+                        <input id="inputValue" type="text" placeholder="Enter Zip Code...">
+                        <!-- search button  -->
+                        <button type="submit" id="search" class="button">Search Now!</button>
+                        <button type="submit" id="back-to-main" class="button">Back to Main</button>
                     </div>
                 </form>
             </div>
         </div>
     </header>
     <!-- header end  -->
+    <!-- modal code start -->
+    <div class="reveal" id="exampleModal1" data-reveal>
+        <h1>Is that your final answer?</h1>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div style="display:flex; justify-content: center;">
+            <button class="clear-button button" type="button" id="clearSearches"
+                data-close="exampleModal1">Yes</button>
+            <button class="clear-button button" type="button"
+                data-close="exampleModal1">No</button>
+        </div>
+    </div>
+    <!-- paulg: clear searches modal end -->
 
-
-    <!-- navigation search and favorites start  -->
+    <!-- navigation search and recents start  -->
     <nav>
-        <!-- Favorites Navigation -->
-        <div class="top-bar">
-            <div class="top-bar-left">
-                <div class="small-block-grid-3 movie-title-display">
-                    <!-- need to format to display sidexside -->
-                </div>
+        <!-- recent-searches -->
+        <div class="top-bar movies text-center">
+            <!-- 5 most recent searches populate here as buttons -->
+            <div class="btn-group" id="search-history">
             </div>
+        </div>
+    </nav>
+    <!-- navigation search and recents end  -->
 
-            <!-- main content start -->
+        <!-- main content start -->
             <results>
-                search results DYNAMICALLY populate here tiled
+                search results populate here
                 <!-- these are placeholders -->
                 <div class="row small-up-2 medium-up-3 large-up-4">
                     <div class="column">
-                        <img class="thumbnail" alt="sad pug" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                        <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
                         <h5>Showtimes</h5>
                     </div>
                     <div class="column">
-                        <img class="thumbnail" alt="sad pug" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                        <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
                         <h5>Showtimes</h5>
                     </div>
                     <!-- placeholders end  -->
             </results>
             <!-- main content end  -->
 
-
             <footer>
                 <div class="row expanded">
-
                     <div class="medium-6 columns">
                         <ul class="menu">
-                            <li><a href="#">Legal</a></li>
-                            <li><a href="#">Partner</a></li>
-                            <li><a href="#">Explore</a></li>
+                            <li><a href="README.md">ReadMe</a></li>
+                            <li><a href="#">Partners</a></li>
                         </ul>
                     </div>
-
+        
                     <div class="medium-6 columns">
                         <ul class="menu align-right">
                             <li class="menu-text">Copyright © 2021 CINEMANIACS</li>
                         </ul>
                     </div>
                 </div>
-
             </footer>
 
 
@@ -133,8 +114,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script type="text/javascript" src="./assets/js/config.js"></script>
-            <script src="./assets/js/local-search.js"></script>
+            <script src="assets\js\local-search.js"></script>
 </body>
 
 </html>
