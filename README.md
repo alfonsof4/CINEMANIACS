@@ -51,7 +51,7 @@ This is the first group project assignment and will meet the acceptance criteria
 
 ## Authors
 
-- Alfonso Fernandez (portfolio link will go here)
+- Alfonso Fernandez (https://alfonsof4.github.io/CINEMANIACS/)
 - Jose Garcia (portfolio link will go here)
 - Paul Guerra (https://pdguerra12.github.io/MyPortfolio/)
 - Reht Cavazos (portfolio link will go here)

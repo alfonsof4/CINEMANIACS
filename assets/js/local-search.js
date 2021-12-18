@@ -12,6 +12,7 @@ date.textContent = moment().format("dddd Do MMMM, YYYY");
 var data = JSON.parse(localStorage.getItem("title"));
 
 // declare variable and get url
+
 var apiKey = "xfkuutw67xzmu7cs8dk27w3j";
 var baseUrl = "http://data.tmsapi.com/v1.1";
 var showtimesUrl = baseUrl + '/movies/showings';
@@ -37,37 +38,63 @@ function movieSearch(e) {
     });
 };
 
-//returns the data from the search
+//returns the data from the search (original list of movies in zip)
+// function dataHandler(data) {
+// 	$(document.body).append(
+// 		"<p>Found" +
+// 			data.length +
+// 			" movies showing within 5 miles of " +
+// 			zip +
+// 			":</p>"
+// 	);
+// 	console.log("data:", data);
+// 	var movies = data.hits;
+// 	$.each(data, function (index, movie) {
+// 		// this is a jquery for each loop
+// 		var movieData = `<div class="tile"><br/>`;
+// 		movieData += movie.title;
+// 		if (movie.ratings) {
+// 			movieData += " (" + movie.ratings[0].code + ") </div>";
+// 		}
+// 		$(document.body).append(movieData);
+// 	});
+// }
+
 function dataHandler(data) {
-    $(document.body).append('<p>Found' + data.length + ' movies showing within 5 miles of ' + zip + ':</p>');
-    console.log("data:", data)
-    var movies = data.hits;
-    $.each(data, function (index, movie) {  // this is a jquery for each loop
-        var movieData = `<div class="tile"><br/>`;
-        movieData += movie.title;
-        if (movie.ratings) { movieData += ' (' + movie.ratings[0].code + ') </div>' };
-        $(document.body).append(movieData);
-    });
+
+	$(document.body).append(
+		"<p>Found" +
+			data.length +
+			" movies showing within 5 miles of " +
+			zip +
+			":</p>"
+	);
+	console.log("data:", data);
+	var movies = data.hits;
+	var recentSearches = JSON.parse(window.localStorage.getItem('title'));
+	$.each(data, function (index, movie) {
+		var movieTitle = recentSearches[recentSearches.length-1];
+		console.log(movieTitle)
+		// this is a jquery for each loop
+		var movieData = `<div class="tile"><br/>`;
+		if (movieTitle === movie.title) {
+		movieData += movie.title;
+		if (movie.ratings) {
+			movieData += " (" + movie.ratings[0].code + ") </div>";
+		}	
+		}
+		
+		$(document.body).append(movieData);
+		var movieData = document.createElement("div")
+	});
 }
 
-//display prior searches in the recent-searches div as buttons
-getSearches()
 
-function getSearches() {
-    var data = JSON.parse(localStorage.getItem("title"));
-    if (data === null) {
-        document.getElementById("search-history").innerHTML = ("No Recent Searches");
-    } else {
-        data = JSON.parse(localStorage.getItem("title"));
-        for (i = 0; i < data.length; i++) {
-            var btn = document.createElement("button")
-            btn.textContent = data[i]
-            document.querySelector(".movies .btn-group").appendChild(btn)
-            btn.className = "btn";
-            btn.attributes = "";
-        }
-    }
-}
+// get array of movies from local storage
+// compare last index to movie titles
+
+//window.localStorage.getItem('title');
+// JSON.parse(window.localStorage.getItem('title'));
 
 //NF
 //back to main page btn var linked to html button id

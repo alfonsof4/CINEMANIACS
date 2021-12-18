@@ -19,6 +19,7 @@ $(".movie-title-display").hide();
 $("#zipBtn").hide();
 
 //Defining the intial value
+
 const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
 const url =
     "https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
