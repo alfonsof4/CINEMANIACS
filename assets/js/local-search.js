@@ -11,7 +11,7 @@ date.textContent = moment().format("dddd Do MMMM, YYYY");
 
 // declare variable and get url
 // paulg: hiding the api key. ;)
-var apiKey = config.zipKey;
+var apiKey = "xfkuutw67xzmu7cs8dk27w3j";
 var baseUrl = "http://data.tmsapi.com/v1.1";
 var showtimesUrl = baseUrl + "/movies/showings";
 var zip;
