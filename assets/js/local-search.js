@@ -36,7 +36,28 @@ function movieSearch(e) {
 	});
 }
 
-//returns the data from the search
+//returns the data from the search (original list of movies in zip)
+// function dataHandler(data) {
+// 	$(document.body).append(
+// 		"<p>Found" +
+// 			data.length +
+// 			" movies showing within 5 miles of " +
+// 			zip +
+// 			":</p>"
+// 	);
+// 	console.log("data:", data);
+// 	var movies = data.hits;
+// 	$.each(data, function (index, movie) {
+// 		// this is a jquery for each loop
+// 		var movieData = `<div class="tile"><br/>`;
+// 		movieData += movie.title;
+// 		if (movie.ratings) {
+// 			movieData += " (" + movie.ratings[0].code + ") </div>";
+// 		}
+// 		$(document.body).append(movieData);
+// 	});
+// }
+
 function dataHandler(data) {
 	$(document.body).append(
 		"<p>Found" +
@@ -47,16 +68,30 @@ function dataHandler(data) {
 	);
 	console.log("data:", data);
 	var movies = data.hits;
+	var recentSearches = JSON.parse(window.localStorage.getItem('title'));
 	$.each(data, function (index, movie) {
+		var movieTitle = recentSearches[recentSearches.length-1];
+		console.log(movieTitle)
 		// this is a jquery for each loop
 		var movieData = `<div class="tile"><br/>`;
+		if (movieTitle === movie.title) {
 		movieData += movie.title;
 		if (movie.ratings) {
 			movieData += " (" + movie.ratings[0].code + ") </div>";
+		}	
 		}
+		
 		$(document.body).append(movieData);
+		var movieData = document.createElement("div")
 	});
 }
+
+
+// get array of movies from local storage
+// compare last index to movie titles
+
+//window.localStorage.getItem('title');
+// JSON.parse(window.localStorage.getItem('title'));
 
 //NF
 //back to main page btn var linked to html button id
