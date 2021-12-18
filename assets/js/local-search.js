@@ -1,4 +1,4 @@
-// populate clicked movie info
+// populate clicked movie info 
 
 // after user inputs zip in search bar dynamically display local showtimes in the results div
 
@@ -9,32 +9,34 @@
 var date = document.querySelector("#date");
 date.textContent = moment().format("dddd Do MMMM, YYYY");
 
+var data = JSON.parse(localStorage.getItem("title"));
+
 // declare variable and get url
-// paulg: hiding the api key. ;)
+
 var apiKey = "xfkuutw67xzmu7cs8dk27w3j";
 var baseUrl = "http://data.tmsapi.com/v1.1";
-var showtimesUrl = baseUrl + "/movies/showings";
+var showtimesUrl = baseUrl + '/movies/showings';
 var zip;
 var d = new Date();
-var today = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+var today = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
 
 //searches movie showtimes near zip value
 function movieSearch(e) {
-	e.preventDefault();
-	zip = $("#inputValue").val().trim();
+    e.preventDefault()
+    zip = $('#inputValue').val().trim()
 
-	//send off the query
-	$.ajax({
-		url: showtimesUrl,
-		data: {
-			startDate: today,
-			zip: zip,
-			jsonp: "dataHandler",
-			api_key: apiKey,
-		},
-		dataType: "jsonp",
-	});
-}
+    //send off the query
+    $.ajax({
+        url: showtimesUrl,
+        data: {
+            startDate: today,
+            zip: zip,
+            jsonp: "dataHandler",
+            api_key: apiKey
+        },
+        dataType: "jsonp",
+    });
+};
 
 //returns the data from the search (original list of movies in zip)
 // function dataHandler(data) {
@@ -59,6 +61,7 @@ function movieSearch(e) {
 // }
 
 function dataHandler(data) {
+
 	$(document.body).append(
 		"<p>Found" +
 			data.length +
@@ -95,15 +98,16 @@ function dataHandler(data) {
 
 //NF
 //back to main page btn var linked to html button id
-// var backToMainBtn = document.getElementById("back-to-main");
-// backToMainBtn.addEventListener("click", backToMain);
-// //this links the first html created for the movie search page
-// function backToMain() {
-// 	location.href = "index.html";
-// }
+var backToMainBtn = document.getElementById("back-to-main")
+backToMainBtn.addEventListener("click", backToMain)
+//this links the first html created for the movie search page
+function backToMain() {
+    location.href = "index.html";
+}
+
 
 // getapi(apiUrl)
-$("#search").click(movieSearch); // jquery version of below
+$('#search').click(movieSearch) // jquery version of below
 
 // In the DOM you have the search form
 // Line 74 is a click listenter
