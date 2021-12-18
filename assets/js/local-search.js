@@ -38,30 +38,7 @@ function movieSearch(e) {
     });
 };
 
-//returns the data from the search (original list of movies in zip)
-// function dataHandler(data) {
-// 	$(document.body).append(
-// 		"<p>Found" +
-// 			data.length +
-// 			" movies showing within 5 miles of " +
-// 			zip +
-// 			":</p>"
-// 	);
-// 	console.log("data:", data);
-// 	var movies = data.hits;
-// 	$.each(data, function (index, movie) {
-// 		// this is a jquery for each loop
-// 		var movieData = `<div class="tile"><br/>`;
-// 		movieData += movie.title;
-// 		if (movie.ratings) {
-// 			movieData += " (" + movie.ratings[0].code + ") </div>";
-// 		}
-// 		$(document.body).append(movieData);
-// 	});
-// }
-
 function dataHandler(data) {
-
 	$(document.body).append(
 		"<p>Found" +
 			data.length +
@@ -83,7 +60,6 @@ function dataHandler(data) {
 			movieData += " (" + movie.ratings[0].code + ") </div>";
 		}	
 		}
-		
 		$(document.body).append(movieData);
 		var movieData = document.createElement("div")
 	});
@@ -93,16 +69,13 @@ function dataHandler(data) {
 // get array of movies from local storage
 // compare last index to movie titles
 
-//window.localStorage.getItem('title');
-// JSON.parse(window.localStorage.getItem('title'));
-
 //NF
 //back to main page btn var linked to html button id
 var backToMainBtn = document.getElementById("back-to-main")
 backToMainBtn.addEventListener("click", backToMain)
 //this links the first html created for the movie search page
 function backToMain() {
-    location.href = "index.html";
+    location.href = "./index.html";
 }
 
 
