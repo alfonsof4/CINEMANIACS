@@ -161,7 +161,6 @@ function toLocalSearchPage() {
 
 var clearHistory = document.getElementById("clearSearches");
 clearHistory.addEventListener(
-
     "click",
     function (event) {
         $(".movieBox").remove();

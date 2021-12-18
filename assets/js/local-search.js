@@ -50,6 +50,25 @@ function dataHandler(data) {
     });
 }
 
+//display prior searches in the recent-searches div as buttons
+getSearches()
+
+function getSearches() {
+    var data = JSON.parse(localStorage.getItem("title"));
+    if (data === null) {
+        document.getElementById("search-history").innerHTML = ("No Recent Searches");
+    } else {
+        data = JSON.parse(localStorage.getItem("title"));
+        for (i = 0; i < data.length; i++) {
+            var btn = document.createElement("button")
+            btn.textContent = data[i]
+            document.querySelector(".movies .btn-group").appendChild(btn)
+            btn.className = "btn";
+            btn.attributes = "";
+        }
+    }
+}
+
 //NF
 //back to main page btn var linked to html button id
 var backToMainBtn = document.getElementById("back-to-main")
