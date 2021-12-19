@@ -8,9 +8,7 @@ var date = document.querySelector("#date");
 date.textContent = moment().format("dddd Do MMMM, YYYY");
 
 //setting a var to display movie results later
-const $searchResultDiv = $('#search-result');
-const $viewMovieInfoDiv = $('#view-movie-info');
-
+var movieTitleDisplay = document.querySelector(".movie-title-display");
 //setting var for the movie details after a title is clicked
 var detailsPopulate = document.querySelector(".details-populate");
 
@@ -25,14 +23,12 @@ $("#zipBtn").hide();
 const API_KEY = "27eb4a424f68db4c8bc0fea4d921efa7";
 const url =
     "https://api.themoviedb.org/3/search/movie?api_key=27eb4a424f68db4c8bc0fea4d921efa7";
-const IMG_URL = "https://image.tmdb.org/t/p/w200";
 
 //Selecting Elements
 const searchBtn = document.querySelector("#search");
 const inputElement = document.querySelector("#inputValue");
 var movie = document.querySelector('#movie')
-// global variable to store movie search result
-let movieResultList = [];
+
 
 //executes search, clears input value
 searchBtn.onclick = function (event) {
@@ -66,8 +62,10 @@ searchBtn.onclick = function (event) {
         fetch(newUrl).then(function (res) {
             if (res.ok) {
                 res.json().then(function (data) {
-                    $searchResultDiv.empty();
-                    $viewMovieInfoDiv.empty();
+                    // console.log(data);
+
+                    //clear data display window of any previous searches
+                    movieTitleDisplay.textContent = ''
 
                     if (data.results.length <= 0) {
                         $("#finalAnswer").hide();
@@ -79,17 +77,7 @@ searchBtn.onclick = function (event) {
                         $(".placeholder").show();
                     } else {
                         //loop through the data results and create each title as a p
-                        let movieList = '';
-                        // store movie result global to access later
-                        movieResultList = data.results;
-
                         for (var i = 0; i < data.results.length; i++) {
-                            if (data.results[i].poster_path) {
-                              movieList += `<div class="movieBox medium-4 columns" data-movie-id=${data.results[i].id}>
-                              <h6>${data.results[i].title}</h6>
-                                <img class="thumbnail" src="${IMG_URL + data.results[i].poster_path}" alt="${data.results[i].title}">
-                            </div>`
-                            }
                             var movieDiv = document.createElement('div')
 
                             // paulg: class attribute added to div for modal removal later
@@ -140,7 +128,6 @@ searchBtn.onclick = function (event) {
                                 $('#zipBtn').show();
                             })
                         }
-                        $searchResultDiv.html(movieList);
                     }
                 });
             } else {
@@ -175,7 +162,7 @@ var clearHistory = document.getElementById("clearSearches");
 clearHistory.addEventListener(
     "click",
     function (event) {
-        $(".#search-result").empty();
+        $(".movieBox").remove();
         // paulg: removes displayed movie detail and detailText classes
         $(".detail").remove();
         $(".detailText").remove();
@@ -231,30 +218,3 @@ function clearBtns() {
     const recentBtns = document.querySelector("#search-history");
     recentBtns.innerHTML = ""
 }
-
-$(function () {
-  console.log('jquery ready');
-
-  function addEventListner() {
-    // using event delegation
-    $searchResultDiv.on('click', '.movieBox', function (e) {
-      $('#populate-here').hide();
-      $('.placeholder').hide();
-      $('.movie-title-display').hide();
-      $("#search-result").empty();
-
-      const clickedMovieId = $(this).data('movieId');
-      const movie = movieResultList.filter(item => item.id === clickedMovieId)[0];
-
-      const template = `
-        <h1>${movie.title}</h1>
-        <p>${movie.overview}</p>
-      `
-      $viewMovieInfoDiv.html(template);
-
-      $('#zipBtn').show();
-    });
-  }
-
-  addEventListner();
-});
