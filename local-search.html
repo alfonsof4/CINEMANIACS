@@ -65,9 +65,10 @@
 			</div>
 		</header>
 		<!-- header end  -->
-		<!-- paulg: modal code start -->
+		<!-- paulg: clear searches modal -->
 		<div class="reveal" id="exampleModal1" data-reveal>
-			<h1>Is that your final answer?</h1>
+			<h1 id="finalAnswer">Is that your final answer?</h1>
+			<h1 id="modalText"></h1>
 			<button
 				class="close-button"
 				data-close
@@ -87,8 +88,8 @@
 				</button>
 				<button
 					class="clear-button button"
-					type="button"
 					data-close="exampleModal1"
+					type="button"
 				>
 					No
 				</button>
@@ -170,9 +171,12 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 		<!-- popper  -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-
-		<!-- paul g: script below for modals to work -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<!-- paul g: script below for modals to work -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js"
+			crossorigin="anonymous"
+		></script>
 		<script src="./assets/js/local-search.js"></script>
 	</body>
 </html>
