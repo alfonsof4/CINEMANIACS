@@ -1,133 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		/>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+		<link rel="stylesheet" href="assets\css\style.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="assets\css\style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<title>CINEMANIACS Movies & Showtimes</title>
+	</head>
 
-    <title>CINEMANIACS Movies & Showtimes</title>
-</head>
+	<!-- page body start  -->
 
-<!-- page body start  -->
+	<body style="text-align: center">
+		<!-- header start -->
+		<header class="row">
+			<div class="medium-3 large-3 columns">
+				<div>
+					<a href="./index.html"
+						><img
+							class="thumbnail"
+							src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg"
+							alt="placeholder logo"
+							style="width: 365.5px; height: 230.5px"
+					/></a>
+				</div>
+			</div>
+			<div class="medium-6 large-6 columns">
+				<div class="panel">
+					<h1 class="css-3d-text">SHOWTIMES</h1>
+					<h2 id="date"></h2>
+				</div>
+			</div>
+			<!-- search container start  -->
+			<div class="medium-3 large-3 columns">
+				<div class="panel callout secondary">
+					<form class="row">
+						<div class="callout-header" style="font-size: 23px">
+							Search Local Showtimes
+							<input
+								id="inputValue"
+								type="text"
+								placeholder="Enter Zip Code..."
+							/>
+							<!-- search button  -->
+							<button type="submit" id="search" class="button">
+								Search Now!
+							</button>
+							<button type="button" id="back-to-main" class="button">
+								Back to Main
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</header>
+		<!-- header end  -->
+		<!-- paulg: modal code start -->
+		<div class="reveal" id="exampleModal1" data-reveal>
+			<h1>Is that your final answer?</h1>
+			<button
+				class="close-button"
+				data-close
+				aria-label="Close modal"
+				type="button"
+			>
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<div style="display: flex; justify-content: center">
+				<button
+					class="clear-button button"
+					type="button"
+					id="clearSearches"
+					data-close="exampleModal1"
+				>
+					Yes
+				</button>
+				<button
+					class="clear-button button"
+					type="button"
+					data-close="exampleModal1"
+				>
+					No
+				</button>
+			</div>
+		</div>
+		<!-- paulg: clear searches modal end -->
 
-<body style="text-align: center;">
-    <!-- header start -->
-    <header class="row">
-        <div class="medium-3 large-3 columns">
-            <div>
-                <a href="./index.html"><img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg" alt="placeholder logo"
-                    style="width:365.5px;height:230.5px;"></a>
-            </div>
-        </div>
-        <div class="medium-6 large-6 columns">
-            <div class="panel">
-                <h1 class="css-3d-text">SHOWTIMES</h1>
-                <h2 id="date"></h2>
-            </div>
-        </div>
-<!-- search container start  -->
-        <div class="medium-3 large-3 columns">
-            <div class="panel callout secondary">
-                <form class="row">
-                    <div class="callout-header" style="font-size: 23px;">
-                        Search Local Showtimes
-                        <input id="inputValue" type="text" placeholder="Enter Zip Code...">
-                        <!-- search button  -->
-                        <button type="submit" id="search" class="button">Search Now!</button>
-                        <button type="button" id="back-to-main" class="button">Back to Main</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </header>
-<!-- header end  -->
-<!-- paulg: modal code start -->
-    <div class="reveal" id="exampleModal1" data-reveal>
-        <h1>Is that your final answer?</h1>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <div style="display:flex; justify-content: center;">
-            <button class="clear-button button" type="button" id="clearSearches"
-                data-close="exampleModal1">Yes</button>
-            <button class="clear-button button" type="button"
-                data-close="exampleModal1">No</button>
-        </div>
-    </div>
-<!-- paulg: clear searches modal end -->
+		<!-- navigation search and recents start  -->
+		<nav>
+			<!-- recent-searches -->
+			<div class="top-bar movies text-center">
+				<!-- 5 most recent searches populate here as buttons -->
+				<div class="btn-group" id="search-history"></div>
+			</div>
+		</nav>
+		<!-- navigation search and recents end  -->
 
-<!-- navigation search and recents start  -->
-    <nav>
-        <!-- recent-searches -->
-        <div class="top-bar movies text-center">
-            <!-- 5 most recent searches populate here as buttons -->
-            <div class="btn-group" id="search-history">
-            </div>
-        </div>
-    </nav>
-<!-- navigation search and recents end  -->
+		<!-- main content start -->
+		<results>
+			search results populate here
+			<div class="movie-showtimes"></div>
+			<!-- these are placeholders -->
+			<div class="row small-up-2 medium-up-3 large-up-4">
+				<div class="column">
+					<img
+						class="thumbnail"
+						alt="sad pug"
+						src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg"
+					/>
+					<h5>Showtimes</h5>
+				</div>
+				<div class="column">
+					<img
+						class="thumbnail"
+						alt="sad pug"
+						src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg"
+					/>
+					<h5>Showtimes</h5>
+				</div>
+				<div class="column">
+					<img
+						class="thumbnail"
+						alt="sad pug"
+						src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg"
+					/>
+					<h5>Showtimes</h5>
+				</div>
+				<div class="column">
+					<img
+						class="thumbnail"
+						alt="sad pug"
+						src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg"
+					/>
+					<h5>Showtimes</h5>
+				</div>
+				<!-- placeholders end  -->
+			</div>
+		</results>
+		<!-- main content end  -->
 
+		<footer>
+			<div class="row expanded">
+				<div class="medium-6 columns">
+					<ul class="menu">
+						<li><a href="README.md">ReadMe</a></li>
+						<li><a href="#">Partners</a></li>
+					</ul>
+				</div>
 
-<!-- main content start -->
-            <results>
-                search results populate here
-                <div class="movie-showtimes"></div>
-                <!-- these are placeholders -->
-                <div class="row small-up-2 medium-up-3 large-up-4">
-                    <div class="column">
-                        <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
-                        <h5>Showtimes</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
-                        <h5>Showtimes</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
-                        <h5>Showtimes</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
-                        <h5>Showtimes</h5>
-                    </div>
-                    <!-- placeholders end  -->
-                </div>
-            </results>
-<!-- main content end  -->
+				<div class="medium-6 columns">
+					<ul class="menu align-right">
+						<li class="menu-text">Copyright © 2021 CINEMANIACS</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
 
-    <footer>
-        <div class="row expanded">
-            <div class="medium-6 columns">
-                <ul class="menu">
-                    <li><a href="README.md">ReadMe</a></li>
-                    <li><a href="#">Partners</a></li>
-                </ul>
-            </div>
+		<!-- moment  -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+		<!-- popper  -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
 
-            <div class="medium-6 columns">
-                <ul class="menu align-right">
-                    <li class="menu-text">Copyright © 2021 CINEMANIACS</li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-
-    <!-- moment  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <!-- popper  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-
-    <!-- paul g: script below for modals to work -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./assets/js/local-search.js"></script>
-
-</body>
-
+		<!-- paul g: script below for modals to work -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="./assets/js/local-search.js"></script>
+	</body>
 </html>
