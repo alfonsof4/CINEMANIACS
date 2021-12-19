@@ -56,13 +56,14 @@ h1 {
 .panel.callout {
     background: var(--fourth);
 }
+
 /* Callout header */
 .callout-header {
-    padding: 25px 15px;
+    padding: 15px 15px;
     background: var(--sixth);
     font-size: 30px;
     color: var(--font);
-  }
+}
 /* search for a movie box style end */
 
 /* button styles start */

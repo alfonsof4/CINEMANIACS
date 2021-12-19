@@ -34,7 +34,7 @@ This is the first group project assignment and will meet the acceptance criteria
 
 ## Deployed link
 
--
+- https://alfonsof4.github.io/CINEMANIACS/
 
 ## Built With
 
@@ -42,16 +42,21 @@ This is the first group project assignment and will meet the acceptance criteria
 - JavaScript
 - CSS
 - Foundation
-- (API 1)
-- (API 2)
+- Movie Database API
+- Gracenote Developer API
 
 ## Directions for future development
+# Elements and Features that could enhance our project in the future:
 
--
+- A CINEMANIACS custom logo
+- The ability to redirect to a ticket service
+- A way to favorite specific movie searches to save
+- Linking the recent history buttons to display the movie details again
+- Repair the error modal to not clear the history on yes
 
 ## Authors
 
 - Alfonso Fernandez (https://alfonsof4.github.io/CINEMANIACS/)
 - Jose Garcia (portfolio link will go here)
 - Paul Guerra (https://pdguerra12.github.io/MyPortfolio/)
-- Reht Cavazos (portfolio link will go here)
+- Reht Cavazos (https://rehtribution.github.io/2-portfolio/)

@@ -31,23 +31,23 @@
                 <h2 id="date"></h2>
             </div>
         </div>
-        <!-- search container start  -->
+<!-- search container start  -->
         <div class="medium-3 large-3 columns">
             <div class="panel callout secondary">
                 <form class="row">
-                    <div class="callout-header">
-                        Search For Showtimes In Your Area
+                    <div class="callout-header" style="font-size: 23px;">
+                        Search Local Showtimes
                         <input id="inputValue" type="text" placeholder="Enter Zip Code...">
                         <!-- search button  -->
                         <button type="submit" id="search" class="button">Search Now!</button>
-                        <button type="submit" id="back-to-main" class="button">Back to Main</button>
+                        <button type="button" id="back-to-main" class="button">Back to Main</button>
                     </div>
                 </form>
             </div>
         </div>
     </header>
-    <!-- header end  -->
-    <!-- modal code start -->
+<!-- header end  -->
+<!-- paulg: modal code start -->
     <div class="reveal" id="exampleModal1" data-reveal>
         <h1>Is that your final answer?</h1>
         <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -60,9 +60,9 @@
                 data-close="exampleModal1">No</button>
         </div>
     </div>
-    <!-- paulg: clear searches modal end -->
+<!-- paulg: clear searches modal end -->
 
-    <!-- navigation search and recents start  -->
+<!-- navigation search and recents start  -->
     <nav>
         <!-- recent-searches -->
         <div class="top-bar movies text-center">
@@ -71,10 +71,10 @@
             </div>
         </div>
     </nav>
-    <!-- navigation search and recents end  -->
+<!-- navigation search and recents end  -->
 
 
-        <!-- main content start -->
+<!-- main content start -->
             <results>
                 search results populate here
                 <div class="movie-showtimes"></div>
@@ -88,10 +88,18 @@
                         <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
                         <h5>Showtimes</h5>
                     </div>
+                    <div class="column">
+                        <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                        <h5>Showtimes</h5>
+                    </div>
+                    <div class="column">
+                        <img class="thumbnail" src="assets\images\matthew-henry-3Bq5lBO1NsU-unsplash.jpg">
+                        <h5>Showtimes</h5>
+                    </div>
                     <!-- placeholders end  -->
+                </div>
             </results>
-            <!-- main content end  -->
-
+<!-- main content end  -->
 
     <footer>
         <div class="row expanded">
@@ -116,9 +124,9 @@
     <!-- popper  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
 
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="./assets/js/local-search.js"></script>
+    <!-- paul g: script below for modals to work -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./assets/js/local-search.js"></script>
 
 </body>
 

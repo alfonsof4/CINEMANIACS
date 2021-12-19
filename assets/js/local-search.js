@@ -38,36 +38,12 @@ function movieSearch(e) {
     });
 };
 
-//returns the data from the search (original list of movies in zip)
-// function dataHandler(data) {
-// 	$(document.body).append(
-// 		"<p>Found" +
-// 			data.length +
-// 			" movies showing within 5 miles of " +
-// 			zip +
-// 			":</p>"
-// 	);
-// 	console.log("data:", data);
-// 	var movies = data.hits;
-// 	$.each(data, function (index, movie) {
-// 		// this is a jquery for each loop
-// 		var movieData = `<div class="tile"><br/>`;
-// 		movieData += movie.title;
-// 		if (movie.ratings) {
-// 			movieData += " (" + movie.ratings[0].code + ") </div>";
-// 		}
-// 		$(document.body).append(movieData);
-// 	});
-// }
+// retrieves the movie showtimes data from the zip 
+//need to display results in the results div https://www.jquery-az.com/use-jquery-append-add-html-content-examples/
 
 function dataHandler(data) {
-
 	$(document.body).append(
-		"<p>Found" +
-			data.length +
-			" movies showing within 5 miles of " +
-			zip +
-			":</p>"
+		"<p>Found" + data.length + " movies showing within 5 miles of " + zip + ":</p>"
 	);
 	console.log("data:", data);
 	var movies = data.hits;
@@ -83,28 +59,42 @@ function dataHandler(data) {
 			movieData += " (" + movie.ratings[0].code + ") </div>";
 		}	
 		}
-		
 		$(document.body).append(movieData);
 		var movieData = document.createElement("div")
 	});
 }
 
-
 // get array of movies from local storage
 // compare last index to movie titles
 
-//window.localStorage.getItem('title');
-// JSON.parse(window.localStorage.getItem('title'));
 
-//NF
 //back to main page btn var linked to html button id
 var backToMainBtn = document.getElementById("back-to-main")
 backToMainBtn.addEventListener("click", backToMain)
 //this links the first html created for the movie search page
 function backToMain() {
-    location.href = "index.html";
+    location.href = "./index.html";
 }
 
+getSearches()
+
+//display prior searches in the recent-searches div as buttons
+//buttons have no link function
+function getSearches() {
+    var data = JSON.parse(localStorage.getItem("title"));
+    if (data === null) {
+        document.getElementById("search-history").innerHTML = ("No Recent Searches");
+    } else {
+        data = JSON.parse(localStorage.getItem("title"));
+        for (i = 0; i < data.length; i++) {
+            var btn = document.createElement("button")
+            btn.textContent = data[i]
+            document.querySelector(".movies .btn-group").appendChild(btn)
+            btn.className = "button";
+            btn.attributes = "";
+        }
+    }
+}
 
 // getapi(apiUrl)
 $('#search').click(movieSearch) // jquery version of below

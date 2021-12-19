@@ -90,13 +90,61 @@ searchBtn.onclick = function (event) {
                                 <img class="thumbnail" src="${IMG_URL + data.results[i].poster_path}" alt="${data.results[i].title}">
                             </div>`
                             }
+                            var movieDiv = document.createElement('div')
+
+                            // paulg: class attribute added to div for modal removal later
+                            movieDiv.setAttribute("class", "movieBox");
+
+                            movieTitleDisplay.append(movieDiv)
+                            var movieTitle = document.createElement('p');
+                            //set class, id of each p
+                            movieTitle.setAttribute('class', 'box')
+                            movieTitle.setAttribute('id', data.results[i].id)
+                            //add the text content from the returned data titles and lsit them
+                            movieTitle.textContent = data.results[i].title;
+                            movieDiv.append(movieTitle)
+
+                            //on target click clear the results and display info on the movie selected, showing the tile as h1 and info as p
+                            movieTitle.addEventListener('click', function (e) {
+
+                                //hides the populate-here placeholders again to display the clicked detail and this time the movie-title-display grid
+                                $('#populate-here').hide();
+                                $('.placeholder').hide();
+                                $('.movie-title-display').hide();
+
+                                //clears the previous titles
+                                movieTitleDisplay.textContent = ''
+                                // console.log(data.results);
+                                //pulls the detailed data from the clicked title
+                                var filtered = data.results.filter(item => item.id == e.target.id)
+                                // console.log(filtered);
+
+                                //creates the elements and displays the detailed information
+                                var title = document.createElement('h1')
+                                title.setAttribute('class', 'detail')
+                                title.textContent = filtered[0].title
+                                var info = document.createElement('p')
+                                // paulg: adding class to p tag to be able to remove both detail, and detailText class later
+                                info.setAttribute("class", "detailText");
+                                info.textContent = filtered[0].overview
+
+                                detailsPopulate.prepend(title, info)
+
+                                // calls function to commit title to local storage 
+                                saveRecentSearches(title.textContent);
+
+                                //NF. save movie details to localstorage
+                                // saveRecentSearches(info.textContent);
+
+                                //reveals the zipBtn that will redirect to the local search page
+                                $('#zipBtn').show();
+                            })
                         }
                         $searchResultDiv.html(movieList);
                     }
                 });
             } else {
                 // reset the page to default after error modal
-
                 location.reload();
             }
         });
@@ -158,6 +206,7 @@ function saveRecentSearches(movie) {
 getSearches()
 
 //display prior searches in the recent-searches div as buttons
+//buttons have no link function
 function getSearches() {
     var data = JSON.parse(localStorage.getItem("title"));
     if (data === null) {
@@ -168,11 +217,14 @@ function getSearches() {
             var btn = document.createElement("button")
             btn.textContent = data[i]
             document.querySelector(".movies .btn-group").appendChild(btn)
-            btn.className = "btn";
+            btn.className = "button";
             btn.attributes = "";
         }
     }
 }
+
+//NF. on click, recent search button should pull movie details from local history
+// document.addEventListener("click", recentDetails);
 
 // function is called in the saverecentsearches, clears button array to replace with new searches 
 function clearBtns() {
