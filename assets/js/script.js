@@ -121,19 +121,17 @@ searchBtn.onclick = function (event) {
                                 // calls function to commit title to local storage 
                                 saveRecentSearches(title.textContent);
 
+                                //NF. save movie details to localstorage
+                                // saveRecentSearches(info.textContent);
+
                                 //reveals the zipBtn that will redirect to the local search page
                                 $('#zipBtn').show();
-
-                                //back to search button
-                                //onclick detailsPopulate.textContent = ''
-                                //return to 
                             })
                         }
                     }
                 });
             } else {
                 // reset the page to default after error modal
-
                 location.reload();
             }
         });
@@ -195,6 +193,7 @@ function saveRecentSearches(movie) {
 getSearches()
 
 //display prior searches in the recent-searches div as buttons
+//buttons have no link function
 function getSearches() {
     var data = JSON.parse(localStorage.getItem("title"));
     if (data === null) {
@@ -205,11 +204,14 @@ function getSearches() {
             var btn = document.createElement("button")
             btn.textContent = data[i]
             document.querySelector(".movies .btn-group").appendChild(btn)
-            btn.className = "btn";
+            btn.className = "button";
             btn.attributes = "";
         }
     }
 }
+
+//NF. on click, recent search button should pull movie details from local history
+// document.addEventListener("click", recentDetails);
 
 // function is called in the saverecentsearches, clears button array to replace with new searches 
 function clearBtns() {

@@ -38,13 +38,12 @@ function movieSearch(e) {
     });
 };
 
+// retrieves the movie showtimes data from the zip 
+//need to display results in the results div https://www.jquery-az.com/use-jquery-append-add-html-content-examples/
+
 function dataHandler(data) {
 	$(document.body).append(
-		"<p>Found" +
-			data.length +
-			" movies showing within 5 miles of " +
-			zip +
-			":</p>"
+		"<p>Found" + data.length + " movies showing within 5 miles of " + zip + ":</p>"
 	);
 	console.log("data:", data);
 	var movies = data.hits;
@@ -65,11 +64,10 @@ function dataHandler(data) {
 	});
 }
 
-
 // get array of movies from local storage
 // compare last index to movie titles
 
-//NF
+
 //back to main page btn var linked to html button id
 var backToMainBtn = document.getElementById("back-to-main")
 backToMainBtn.addEventListener("click", backToMain)
@@ -78,6 +76,25 @@ function backToMain() {
     location.href = "./index.html";
 }
 
+getSearches()
+
+//display prior searches in the recent-searches div as buttons
+//buttons have no link function
+function getSearches() {
+    var data = JSON.parse(localStorage.getItem("title"));
+    if (data === null) {
+        document.getElementById("search-history").innerHTML = ("No Recent Searches");
+    } else {
+        data = JSON.parse(localStorage.getItem("title"));
+        for (i = 0; i < data.length; i++) {
+            var btn = document.createElement("button")
+            btn.textContent = data[i]
+            document.querySelector(".movies .btn-group").appendChild(btn)
+            btn.className = "button";
+            btn.attributes = "";
+        }
+    }
+}
 
 // getapi(apiUrl)
 $('#search').click(movieSearch) // jquery version of below
