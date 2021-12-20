@@ -30,7 +30,7 @@ This is the first group project assignment and will meet the acceptance criteria
 
 ## Demo Gif
 
-![demo-gif](https://user-images.githubusercontent.com/92597876/144950920-71158205-c4c4-42ff-8ec1-d6b8aec0a4be.gif)
+![demo-gif](assets\images\recording.gif)
 
 ## Deployed link
 
@@ -56,7 +56,7 @@ This is the first group project assignment and will meet the acceptance criteria
 
 ## Authors
 
-- Alfonso Fernandez (https://alfonsof4.github.io/CINEMANIACS/)
+- Alfonso Fernandez (https://alfonsof4.github.io/portfolio/)
 - Jose Garcia (portfolio link will go here)
 - Paul Guerra (https://pdguerra12.github.io/MyPortfolio/)
 - Reht Cavazos (https://rehtribution.github.io/2-portfolio/)
