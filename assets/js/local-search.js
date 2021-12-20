@@ -23,34 +23,44 @@ var zip;
 var d = new Date();
 var today = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
 
-// paulg: modal below for when the zip searches start working.
-// if (zip === "") {
-// 	$("#finalAnswer").hide();
-// 	$("#modalText").text("Please submit a valid zip code.");
-// 	$("#exampleModal1").foundation("open");
-// } else {
 //searches movie showtimes near zip value
 function movieSearch(e) {
 	e.preventDefault();
 	zip = $("#inputValue").val().trim();
 
-	//send off the query
-	$.ajax({
-		url: showtimesUrl,
-		data: {
-			startDate: today,
-			zip: zip,
-			jsonp: "dataHandler",
-			api_key: apiKey,
-		},
-		dataType: "jsonp",
-	});
+	// paulg: if else statement to make sure the user enters a value otherwise the modal goes off.
+	if (zip === "") {
+		$("#finalAnswer").hide();
+		$("#modalText").text("Please submit a valid zip code.");
+		$("#exampleModal1").foundation("open");
+		// } else if (data.length >= 6) {
+		// 	$("#finalAnswer").hide();
+		// 	$("#modalText").text("No showtimes found. Please correct the zipcode.");
+		// 	$("#openModal").hide();
+		// 	$("#exampleModal1").foundation("open");
+	} else {
+		//send off the query
+		$.ajax({
+			url: showtimesUrl,
+			data: {
+				startDate: today,
+				zip: zip,
+				jsonp: "dataHandler",
+				api_key: apiKey,
+			},
+			dataType: "jsonp",
+		});
+	}
 }
-// }
 
 // retrieves the movie showtimes data from the zip
 //need to display results in the results div https://www.jquery-az.com/use-jquery-append-add-html-content-examples/
-
+// if (data.length <= 0) {
+// 	$("#finalAnswer").hide();
+// 	$("#modalText").text("No showtimes found. Please correct the zipcode.");
+// 	$("#openModal").hide();
+// 	$("#exampleModal1").foundation("open");
+// } else {
 function dataHandler(data) {
 	$(document.body).append(
 		"<p>Found" +
@@ -77,6 +87,7 @@ function dataHandler(data) {
 		var movieData = document.createElement("div");
 	});
 }
+// }
 
 // get array of movies from local storage
 // compare last index to movie titles
