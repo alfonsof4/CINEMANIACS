@@ -56,6 +56,6 @@ This is the first group project assignment and will meet the acceptance criteria
 ## Authors
 
 - Alfonso Fernandez (https://alfonsof4.github.io/portfolio/)
-- Jose Garcia (portfolio link will go here)
+- Jose Garcia (https://richgarcia7525.github.io/portfolio/)
 - Paul Guerra (https://pdguerra12.github.io/MyPortfolio/)
 - Reht Cavazos (https://rehtribution.github.io/2-portfolio/)
