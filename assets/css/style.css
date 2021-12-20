@@ -161,15 +161,3 @@ h1 {
 footer {
     background-color: var(--fourth);
 }
-
-.movieBox {
-    cursor: pointer;
-}
-
-.movieBox .thumbnail {
-    height: 300px;
-}
-
-.movieBox h6 {
-    height: 35px;
-}

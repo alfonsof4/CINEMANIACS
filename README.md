@@ -28,9 +28,8 @@ This is the first group project assignment and will meet the acceptance criteria
 
 - Finally, you must add your project to the portfolio that you created in Module 2.
 
-## Demo Gif
-
-![demo-gif](https://user-images.githubusercontent.com/92597876/144950920-71158205-c4c4-42ff-8ec1-d6b8aec0a4be.gif)
+## Demo Gif/pic
+![image](https://user-images.githubusercontent.com/92597876/146704577-cf5dd278-1325-4588-8a5c-ea658a429ea7.png)
 
 ## Deployed link
 
@@ -56,7 +55,7 @@ This is the first group project assignment and will meet the acceptance criteria
 
 ## Authors
 
-- Alfonso Fernandez (https://alfonsof4.github.io/CINEMANIACS/)
-- Jose Garcia (portfolio link will go here)
+- Alfonso Fernandez (https://alfonsof4.github.io/portfolio/)
+- Jose Garcia (https://richgarcia7525.github.io/portfolio/)
 - Paul Guerra (https://pdguerra12.github.io/MyPortfolio/)
 - Reht Cavazos (https://rehtribution.github.io/2-portfolio/)
