@@ -26,19 +26,12 @@ var today = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
 //searches movie showtimes near zip value
 function movieSearch(e) {
 	e.preventDefault();
-	zip = $("#inputValue").val().trim();
 
-	// paulg: if else statement to make sure the user enters a value otherwise the modal goes off.
-	if (zip === "") {
-		$("#finalAnswer").hide();
-		$("#modalText").text("Please submit a valid zip code.");
-		$("#exampleModal1").foundation("open");
-		// } else if (data.length >= 6) {
-		// 	$("#finalAnswer").hide();
-		// 	$("#modalText").text("No showtimes found. Please correct the zipcode.");
-		// 	$("#openModal").hide();
-		// 	$("#exampleModal1").foundation("open");
-	} else {
+	// paulg: if validZip comes back true, then a call is made to the api. otherwise, the modal pops up with the error message.
+	var validZip = validateInput();
+	if (validZip) {
+		zip = $("#inputValue").val().trim();
+
 		//send off the query
 		$.ajax({
 			url: showtimesUrl,
@@ -50,18 +43,16 @@ function movieSearch(e) {
 			},
 			dataType: "jsonp",
 		});
+		// }
+	} else {
+		$("#finalAnswer").hide();
+		$("#modalText").text("Please submit a valid zipcode.");
+		$("#exampleModal1").foundation("open");
 	}
 }
 
-// retrieves the movie showtimes data from the zip
-//need to display results in the results div https://www.jquery-az.com/use-jquery-append-add-html-content-examples/
-// if (data.length <= 0) {
-// 	$("#finalAnswer").hide();
-// 	$("#modalText").text("No showtimes found. Please correct the zipcode.");
-// 	$("#openModal").hide();
-// 	$("#exampleModal1").foundation("open");
-// } else {
 function dataHandler(data) {
+	console.log("data:", data);
 	$(document.body).append(
 		"<p>Found" +
 			data.length +
@@ -69,7 +60,7 @@ function dataHandler(data) {
 			zip +
 			":</p>"
 	);
-	console.log("data:", data);
+	// console.log("data:", data);
 	var movies = data.hits;
 	var recentSearches = JSON.parse(window.localStorage.getItem("title"));
 	$.each(data, function (index, movie) {
@@ -122,6 +113,23 @@ function getSearches() {
 
 // getapi(apiUrl)
 $("#search").click(movieSearch); // jquery version of below
+
+// paulg: function to see if a string contains 5 consecutive numbers.
+function isUSAZipCode(str) {
+	return /^\d{5}(-\d{4})?$/.test(str);
+}
+
+// paulg: function checking the value of the input field.
+function validateInput() {
+	let zipCode = document.getElementById("inputValue").value;
+	if (isUSAZipCode(zipCode)) {
+		// paulg: valid zip code.
+		return true;
+	} else {
+		// paulg: invalid zip code.
+		return false;
+	}
+}
 
 // In the DOM you have the search form
 // Line 74 is a click listenter
