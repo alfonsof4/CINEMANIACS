@@ -28,9 +28,8 @@ This is the first group project assignment and will meet the acceptance criteria
 
 - Finally, you must add your project to the portfolio that you created in Module 2.
 
-## Demo Gif
-
-![demo-gif](assets\images\recording.gif)
+## Demo Gif/pic
+![image](https://user-images.githubusercontent.com/92597876/146704577-cf5dd278-1325-4588-8a5c-ea658a429ea7.png)
 
 ## Deployed link
 
